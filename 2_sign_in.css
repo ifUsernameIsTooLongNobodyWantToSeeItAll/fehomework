@@ -1,0 +1,184 @@
+html, body {
+    height: 300px;
+}
+
+#top_side_first {
+    background: #ff7a9e;
+    height: 60px;
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+}
+
+#logo_second {
+    width: 160px;
+}
+
+#top_place_3 {
+    background: url(./topbar.png) no-repeat;
+    position: relative;
+    display: flex;
+    color: white;
+    top: 13px;
+    left: 20px;
+    width: 158px;
+}
+
+#small_4 {
+    height: 45px;
+    width: 100px;
+}
+
+#search_box_second {
+    position: absolute;
+    float: left;
+    top: 20px;
+    height: 40px;
+    /*line-height:60px;*/
+    left: 300px;
+    background: #f57598;
+    border-radius: 20px;
+    width: 220px;
+}
+
+#button_3 {
+    height: 30px;
+    background: url("./search.svg");
+    border: 0 solid;
+    top: 5px;
+    position: relative;
+    left: 10px;
+}
+
+#input_3 {
+    height: 30px;
+    background: #f57598;
+    border: 0 solid;
+    border-radius: 10px;
+    top: 2px;
+    position: relative;
+    left: 10px;
+    outline: none;
+    /*text-decoration-color: white;*/
+    color: white;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: white;
+}
+
+#search_icon_3 {
+    position: relative;
+    width: 15px;
+}
+
+#head_and_name_2 {
+    /*background-color: #f57598;*/
+    /*color: #f57598;*/
+    height: 60px;
+    position: absolute;
+    border: 0 solid;
+    left: 1100px;
+}
+
+#button_for_head_and_name_3 {
+    border: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 60px;
+    width: 200px;
+    background-color: #ff7a9e;
+    text-align: center;
+}
+
+#head_4 {
+    width: 30px;
+    border-radius: 30px;
+    float: left;
+}
+
+#username_4 {
+    display: compact;
+    color: black;
+    /*height: 60px;*/
+    flex-direction: column;
+    margin: auto;
+    position: relative;
+    top: 5px;
+    float: left;
+    /*left: -50px;*/
+    width: 100px;
+}
+
+#under_1 {
+    height: calc(100vh - 80px);
+    width: 100vw;
+}
+
+#login_window_2 {
+    width: 525px;
+    height: 795px;
+    /*background-color: pink;*/
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    border: black 1px solid;
+}
+
+#exit_3 {
+    width: 21px;
+    height: 21px;
+    float: right;
+}
+
+#picture_exit_4 {
+    width: 21px;
+    height: 21px;
+    float: right;
+}
+
+#word_3 {
+    font-family: "Microsoft YaHei UI", serif;
+    font-size: 40px;
+    position: relative;
+    top: 150px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#QR_code_3 {
+    width: 300px;
+    height: 300px;
+    top: 250px;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    /*background-color: red;*/
+    display: flex;
+}
+
+#other_way_3 {
+    width: 160px;
+    height: 20px;
+    position: absolute;
+    top: calc(687px + 60px);
+    font-size: 16px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#other_way_4 {
+    text-decoration: none;
+    color: gray;
+    font-family: "Microsoft YaHei UI", serif;
+}

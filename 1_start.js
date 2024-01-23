@@ -146,16 +146,18 @@ function fetches() {
             console.log(response.status)
         })
 
-    fetch("http://localhost:3000/login/status")
-        .then((response) => {
-            response.json().then(json => userInformation = json)
-            console.log(response.status)
-        })
-
     fetch("http://localhost:3000/personalized?limit=10").then(r => {
         r.json().then(json => informationOfGeDan = json)
         console.log(r.status)
     })
+
+    fetch("http://localhost:3000/login/status")
+        .then((response) => {
+            response.json().then(json => userInformation = json)
+            console.log(response.status)
+        }, () => {
+            alert("No!")
+        })
 
     if (userInformation.data.account.id !== null) {
         setTimeout(() => {
@@ -276,10 +278,7 @@ function slide() {
     }
 }
 
-
-
 /*获取歌单*/
-
 
 function getLoginHead() {
     if (userInformation.data.account.id === 9119289842) {
@@ -287,9 +286,11 @@ function getLoginHead() {
         fetch("http://localhost:3000/logout").then(r => isLoggedIn = false)
     } else
         isLoggedIn = userInformation.data.account.id != null;
-    if (isLoggedIn) {
+    if (isLoggedIn && userInformation.data.profile.avatarUrl != null) {
         head.setAttribute("src", userInformation.data.profile.avatarUrl)
         username.innerText = userInformation.data.profile.nickname.toString()
+    } else {
+        head.setAttribute("src", "./img.png")
     }
 }
 
@@ -297,10 +298,6 @@ function getGeDanRecommendations() {
     for (let i = 0; i < 10; i++) {
         geDanRecommendations[i].setAttribute("src", informationOfGeDan.result[i].picUrl)
         geDanDescription[i].innerHTML = informationOfGeDan.result[i].name
-        // if(i > 4)
-        //     boFangShu2[i].innerHTML = informationOfGeDan.result[i-5].playCount
-        // else
-        //     boFangShu[i].innerHTML = informationOfGeDan.result[i].playCount
     }
 }
 
@@ -327,9 +324,10 @@ function getUserGeDanList() {
 function main() {
     fetches()
     setTimeout(() => {
-        getSliderPictures()
-        getLoginHead()
         getGeDanRecommendations()
         getUserGeDanList()
+        getSliderPictures()
+        getLoginHead()
+
     }, 500) // in main
 }
