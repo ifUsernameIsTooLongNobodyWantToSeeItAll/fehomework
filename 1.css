@@ -123,38 +123,50 @@ textarea::-webkit-input-placeholder {
 }
 
 #left_side_1 {
-    display: block;
+    /*display: flex;*/
     /*height: calc(window.innerHeight.toString());*/
-    height: calc(100vh - 80px);
-    width: 200px;
+    position: absolute;
+    height: 100%;
+    width: 15vw;
     border: gray solid;
     border-width: 0 1px 0 0;
+    /*flex-direction: row;*/
 }
 
-#my_favourite_2 {
+.ge_dan_in_left_2 {
     position: relative;
-    top: 20px;
-    background: white;
-    width: 200px;
-    height: fit-content;
+    top: 40px;
+    /*background: white;*/
+    width: 100%;
+    height: 30px;
     border: 0;
     text-align: left;
+    flex-direction: row;
+    display: flex;
+    /*background-color: pink;*/
 }
 
 .not_clicked_or_not_in_3 {
     font-size: 15px;
     color: black;
+    /*color: black;*/
     text-decoration: none;
+    width: 100%;
+    height: 30px;
+    /*background-color: pink;*/
+    /*top: 30px;*/
 }
 
 #My_favorite_icon_4 {
     width: 20px;
+    height: 20px;
     position: relative;
-    top: 4px;
+    /*top: 0;*/
+    top: 5px;
 }
 
 #right_side_1 {
-    width: calc(100vw - 250px);
+    width: 80vw;
     height: calc(100vh - 80px);
     position: absolute;
     left: 250px;
@@ -223,12 +235,18 @@ ul, li, ol {
     text-align: center;
     line-height: 18px;
     border-radius: 20px;
+    left: -55px;
+    bottom: -5px;
+    position: relative;
 }
 
 .slider_2 ol li.current {
     background: pink;
     cursor: pointer;
     border-radius: 20px;
+    left: -55px;
+    bottom: -5px;
+    position: relative;
 }
 
 #recommendations_2 {
@@ -254,14 +272,14 @@ ul, li, ol {
 }
 
 .ge_dan_4 {
-    height: 230px;
+    height: 250px;
     display: flex;
 }
 
 .ge_dan_5 {
-    height: 230px;
+    height: 250px;
     display: flex;
-    width: 250px;
+    width: 230px;
 
 }
 
@@ -271,6 +289,27 @@ ul, li, ol {
     text-decoration: none;
     /*background: #f57598;*/
     border: 0 white solid;
+}
+
+.number_7 {
+    /*font-weight: lighter;*/
+    font-size: 12px;
+    /*background-color: #f57598;*/
+    text-align: right;
+    width: 200px;
+    position: absolute;
+    top: 0;
+    color: white;
+}
+
+.number_2_7 {
+    font-size: 12px;
+    /*background-color: #f57598;*/
+    text-align: right;
+    width: 200px;
+    position: absolute;
+    top: 250px;
+    color: white;
 }
 
 .pic_7 {
