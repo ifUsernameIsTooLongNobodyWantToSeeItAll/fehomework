@@ -1,0 +1,282 @@
+html, body {
+    height: 300px;
+}
+
+#top_side_first {
+    background: #ff7a9e;
+    height: 60px;
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+}
+
+#logo_second {
+    width: 160px;
+}
+
+#top_place_3 {
+    background: url(./topbar.png) no-repeat;
+    position: relative;
+    display: flex;
+    color: white;
+    top: 13px;
+    left: 20px;
+    width: 158px;
+}
+
+#small_4 {
+    height: 45px;
+    width: 100px;
+}
+
+#search_box_second {
+    position: absolute;
+    float: left;
+    top: 20px;
+    height: 40px;
+    /*line-height:60px;*/
+    left: 300px;
+    background: #f57598;
+    border-radius: 20px;
+    width: 220px;
+}
+
+#button_3 {
+    height: 30px;
+    background: url("./search.svg");
+    border: 0 solid;
+    top: 5px;
+    position: relative;
+    left: 10px;
+}
+
+#input_3 {
+    height: 30px;
+    background: #f57598;
+    border: 0 solid;
+    border-radius: 10px;
+    top: 2px;
+    position: relative;
+    left: 10px;
+    outline: none;
+    /*text-decoration-color: white;*/
+    color: white;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: white;
+}
+
+#search_icon_3 {
+    position: relative;
+    width: 15px;
+}
+
+#head_and_name_2 {
+    /*background-color: #f57598;*/
+    /*color: #f57598;*/
+    height: 60px;
+    position: absolute;
+    border: 0 solid;
+    left: 1100px;
+}
+
+#button_for_head_and_name_3 {
+    border: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 60px;
+    width: 200px;
+    background-color: #ff7a9e;
+    text-align: center;
+}
+
+#head_4 {
+    width: 30px;
+    border-radius: 30px;
+    float: left;
+}
+
+#username_4 {
+    display: compact;
+    color: black;
+    /*height: 60px;*/
+    flex-direction: column;
+    margin: auto;
+    position: relative;
+    top: 5px;
+    float: left;
+    /*left: -50px;*/
+    width: 100px;
+}
+
+#under_1 {
+    height: calc(100vh - 80px);
+    width: 100vw;
+}
+
+#login_window_2 {
+    width: 525px;
+    height: 795px;
+    background-color: pink;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    border: black 1px solid;
+}
+
+#exit_3 {
+    width: 21px;
+    height: 21px;
+    float: right;
+}
+
+#picture_exit_4 {
+    width: 21px;
+    height: 21px;
+    float: right;
+}
+
+#up_left_triangle_3 {
+    float: left;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: calc((100vw - 525px) / 2 + 8px);
+}
+
+#up_left_triangle_4 {
+    width: 80px;
+    height: 80px;
+}
+
+
+#text_scan_is_safe_3 {
+    position: relative;
+    left: 100px;
+    top: 20px;
+    width: 160px;
+    height: 40px;
+    background-color: gray;
+    border-radius: 0 5px 5px 5px;
+}
+
+#triangle_left_3 {
+    position: relative;
+    float: left;
+    top: 20px;
+    left: 85px;
+    /* background-color: gray; */
+    width: 0;
+    height: 0;
+    border-top: 15px solid gray;
+    border-left: 15px solid transparent;
+}
+
+#text_scan_is_safe_4 {
+    width: 160px;
+    height: 18px;
+    font-size: 17px;
+    /*background-color: #f57598;*/
+    color: white;
+    text-align: left;
+    font-family: "Microsoft YaHei UI", serif;
+    line-height: 17px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: relative;
+}
+
+#logo_3 {
+    position: relative;
+    top: 82px;
+    width: 85px;
+    height: 85px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#tables_3 {
+    position: relative;
+    top: 238px;
+    width: 390px;
+    height: 120px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border: black 1px solid;
+    border-spacing: 0;
+}
+
+#col_1_4 {
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 60px;
+    border: 1px solid black;
+    width: 390px;
+    border-spacing: 0;
+}
+
+#col_2_4 {
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 60px;
+    border: 1px solid black;
+    width: 390px;
+}
+
+#row_1_5 {
+    width: 128px;
+    height: 100%;
+    /*border: 1px gray;*/
+    border: 1px solid black;
+    border-spacing: 0;
+}
+
+#row_2_5 {
+    width: calc(390px - 128px - 2px);
+    border: 1px solid black;
+    border-spacing: 0;
+
+}
+
+#phone_picture_6 {
+    width: 48px;
+    height: 48px;
+}
+
+#row_3_5 {
+
+    border: 1px solid black;
+}
+
+table {
+    border: 0;
+    margin: 0;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 0;
+}
+
+#phone_number_6 {
+    outline: none;
+    border: 0 solid;
+    height: 50px;
+    width: calc(390px - 128px - 2px - 10px);
+    font-size: larger;
+}

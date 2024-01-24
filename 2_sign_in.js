@@ -1,5 +1,4 @@
 // 变量定义
-// import {request} from "node:http";
 
 let key;
 let getKey = {
