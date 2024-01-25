@@ -49,7 +49,6 @@ function fetches() {
 function login() {
     let check = setInterval(() => {
         let nowNext = new Date().getTime();
-        // let res = await qrCodeLoginCheck(key,nowNext).then()
         fetch(`http://localhost:3000/login/qr/check?key=${key}&t=${nowNext}&noCookie=true`).then(r => {
             r.json().then((json) => QRCode = json)
             console.log(r.status)
