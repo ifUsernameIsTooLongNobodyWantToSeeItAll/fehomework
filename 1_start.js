@@ -45,64 +45,62 @@ let sliderPicture = {
 };
 
 let userInformation = {
-    data: {
-        code: null,
-        account: {
-            id: null,
-            userName: null,
-            type: null,
-            status: null,
-            whitelistAuthority: null,
-            createTime: null,
-            tokenVersion: null,
-            ban: null,
-            baoyueVersion: null,
-            donateVersion: null,
-            vipType: null,
-            anonimousUser: null,
-            paidFee: null
-        },
-        profile: {
-            userId: null,
-            userType: null,
-            nickname: null,
-            avatarImgId: null,
-            avatarUrl: null,
-            backgroundImgId: null,
-            backgroundUrl: null,
-            signature: null,
-            createTime: null,
-            userName: null,
-            accountType: null,
-            shortUserName: null,
-            birthday: null,
-            authority: null,
-            gender: null,
-            accountStatus: null,
-            province: null,
-            city: null,
-            authStatus: null,
-            description: null,
-            detailDescription: null,
-            defaultAvatar: null,
-            expertTags: null,
-            experts: null,
-            djStatus: null,
-            locationStatus: null,
-            vipType: null,
-            followed: null,
-            mutual: null,
-            authenticated: null,
-            lastLoginTime: null,
-            lastLoginIP: null,
-            remarkName: null,
-            viptypeVersion: null,
-            authenticationTypes: null,
-            avatarDetail: null,
-            anchor: null
-        }
+    code: null,
+    account: {
+        id: null,
+        userName: null,
+        type: null,
+        status: null,
+        whitelistAuthority: null,
+        createTime: null,
+        tokenVersion: null,
+        ban: null,
+        baoyueVersion: null,
+        donateVersion: null,
+        vipType: null,
+        anonimousUser: null,
+        paidFee: null
+    },
+    profile: {
+        userId: null,
+        userType: null,
+        nickname: null,
+        avatarImgId: null,
+        avatarUrl: null,
+        backgroundImgId: null,
+        backgroundUrl: null,
+        signature: null,
+        createTime: null,
+        userName: null,
+        accountType: null,
+        shortUserName: null,
+        birthday: null,
+        authority: null,
+        gender: null,
+        accountStatus: null,
+        province: null,
+        city: null,
+        authStatus: null,
+        description: null,
+        detailDescription: null,
+        defaultAvatar: null,
+        expertTags: null,
+        experts: null,
+        djStatus: null,
+        locationStatus: null,
+        vipType: null,
+        followed: null,
+        mutual: null,
+        authenticated: null,
+        lastLoginTime: null,
+        lastLoginIP: null,
+        remarkName: null,
+        viptypeVersion: null,
+        authenticationTypes: null,
+        avatarDetail: null,
+        anchor: null
     }
-};
+}
 let informationOfGeDan = {
     hasTaste: null,
     code: null,
@@ -151,7 +149,7 @@ function fetches() {
         console.log(r.status)
     })
 
-    fetch("http://localhost:3000/login/status")
+    fetch(`http://localhost:3000/user/account?t=${new Date().getTime()}`)
         .then((response) => {
             response.json().then(json => userInformation = json)
             console.log(response.status)
@@ -159,13 +157,15 @@ function fetches() {
             alert("No!")
         })
 
-    if (userInformation.data.account.id !== null) {
+    if (userInformation.account.id !== null) {
         setTimeout(() => {
-            fetch(`http://localhost:3000/user/playlist?uid=${userInformation.data.account.id}`).then((r) => r.json)
+            fetch(`http://localhost:3000/user/playlist?uid=${userInformation.account.id}`).then((r) => r.json)
                 .then((json) => geDanListByUser = json)
         }, 200)
     }
 
+    fetch(`http://localhost:3000/login/refresh?t=${new Date().getTime()}`)
+        .then(r => console.log(r.status))
 }
 
 function getSliderPictures() {
@@ -185,11 +185,7 @@ function getSliderPictures() {
         arrayOfSliderPicturesInHtml[i].setAttribute("src", sliderPicture.banners[i].imageUrl)
     }
     // arrayOfSliderPicturesInHtml[arrayOfSliderPicturesInHtml.length].setAttribute("src", sliderPicture.banners[0].imageUrl)
-
     slide()
-    // setTimeout(() => {
-    //     slide()
-    // }, 200)
 }
 
 
@@ -210,7 +206,7 @@ function slide() {
     slider.appendChild(ol);
     for (i = 0; i < ullis.length - 1; i++) {
         const li = document.createElement("li");
-        li.innerHTML = i + 1;
+        li.innerHTML = (i + 1).toString();
         ol.appendChild(li);
     }
     ol.children[0].setAttribute("class", "current");
@@ -232,7 +228,6 @@ function slide() {
             key = point = this.index; // 从当前开始动画
         }
     }
-
 // 缓动动画函数
     let leader = 0;//缓动动画变量
     function animate(obj, target) {
@@ -281,16 +276,19 @@ function slide() {
 /*获取歌单*/
 
 function getLoginHead() {
-    if (userInformation.data.account.id === 9119289842) {
+    if (userInformation.account.id === 9119289842) {
         isLoggedIn = false;
         fetch("http://localhost:3000/logout").then(r => isLoggedIn = false)
     } else
-        isLoggedIn = userInformation.data.account.id != null;
-    if (isLoggedIn && userInformation.data.profile.avatarUrl != null) {
-        head.setAttribute("src", userInformation.data.profile.avatarUrl)
-        username.innerText = userInformation.data.profile.nickname.toString()
-    } else {
-        head.setAttribute("src", "./img.png")
+        isLoggedIn = (userInformation.account.id != null)
+    if (isLoggedIn) {
+        if (userInformation.profile === null) {
+            head.setAttribute("src", "../img/default_head.png")
+            username.innerText = userInformation.account.userName
+        } else {
+            head.setAttribute("src", userInformation.profile.avatarUrl)
+            username.innerText = userInformation.profile.nickname.toString()
+        }
     }
 }
 
@@ -321,6 +319,12 @@ function getUserGeDanList() {
     }
 }
 
+function changeLink() {
+    if (isLoggedIn) {
+        username.setAttribute("href", "https://music.163.com")
+    }
+}
+
 function main() {
     fetches()
     setTimeout(() => {
@@ -328,6 +332,6 @@ function main() {
         getUserGeDanList()
         getSliderPictures()
         getLoginHead()
-
+        changeLink()
     }, 500) // in main
 }

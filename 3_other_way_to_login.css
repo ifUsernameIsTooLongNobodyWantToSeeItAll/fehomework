@@ -356,3 +356,6 @@ table td {
     color: white;
 }
 
+#button_to_click_4:active {
+    transform: scale(0.8);
+}

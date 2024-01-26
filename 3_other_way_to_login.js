@@ -16,7 +16,7 @@ let signedIn = {
 let correctPassword = {
     code: null
 }
-let isLegalNumber = false
+let isLegalNumber = true
 main()
 
 // function
@@ -26,19 +26,19 @@ function main() {
         console.log(`telephone number = ${telephoneObject.value}`)
         setTimeout(() => {
             isLegalNumber = isLegal(telephoneObject.value)
-            if (isLegalNumber) {
+            if (isLegalNumber !== false) {
+                fetches()
                 setTimeout(() => {
-                    fetches()
-                    setTimeout(() => {
-                        if (!isRightPassword()) {
-                            alert("账号或密码错误！")
-                        } else {
-                            window.location.url = "1_start.html"
-                        }
-                    }, 101)
-                })
+                    if (!isRightPassword()) {
+                        alert("账号或密码错误！")
+                    } else {
+                        // window.location.url = "1_start.html"
+                        // window.navigate("1_start.html").then(r => console.log(r.status));//
+                        window.location.replace("1_start.html")
+                    }
+                }, 101)
             }
-        }, 200)
+        }, 100)
     }
 }
 
@@ -51,11 +51,13 @@ function fetches() {
 }
 
 function isLegal(tel) {
-    if (1 < (Number(tel) / 10000000000) && (Number(tel) / 10000000000) < 2) {
+    if (!(1 < (Number(tel) / 10000000000) && (Number(tel) / 10000000000) < 2)) {
         alert("请输入正确的手机号")
         return false
     }
-    fetch(`http://localhost:3000/cellphone/existence/check?phone=${tel}&t=${new Date().getTime()}`).then(r => {
+    fetch(`http://localhost:3000/cellphone/existence/check?phone=${tel}&t=${new Date().getTime()}`, {
+        method: "POST"
+    }).then(r => {
         r.json().then(r => signedIn = r)
         console.log(r.status);
     })
@@ -66,11 +68,9 @@ function isLegal(tel) {
         }
         return true
     }, 100)
-
-
 }
 
 function isRightPassword() {
-    console.log(correctPassword.code)
+    console.log(`correctPassword.code = ${correctPassword.code}`)
     return correctPassword.code === 200;
 }
