@@ -303,7 +303,7 @@ function getUserGeDanList() {
     if (isLoggedIn) {
         if (geDanListByUser.playlist.length > 1) {
             for (let i = 0; i < geDanListByUser.playlist.length; i++) {
-                let addElement = "<a class=\"not_clicked_or_not_in_3 not_favorite_3\" href=\"./ge_dan.html\">\n</a>"
+                let addElement = "<a class=\"not_clicked_or_not_in_3 not_favorite_3\" href=\"5_ge_dan_detail.html\">\n</a>"
                 let add = document.createElement("div")
                 add.innerHTML = addElement
                 let total = document.getElementById("left_side_1")

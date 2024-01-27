@@ -158,16 +158,20 @@ function main() {
     setTimeout(() => {
         getLoginHead()
         getCategory()
-        getGeDanInformation()
+        getGeDanInformation(0)
         clickButton()
-    }, 200)
+    }, 500)
 }
 
 function fetches() {
+    fetch(`http://localhost:3000/login/refresh?t=${new Date().getTime()}`).then((r) => {
+        console.log(`login refresh status = ${r.status}`)
+    })
+
     fetch(`http://localhost:3000/user/account?t=${new Date().getTime()}`)
         .then((response) => {
             response.json().then(json => userInformation = json)
-            console.log(response.status)
+            console.log(`account status = ${response.status}`)
         }, () => {
             alert("No!")
         })
@@ -177,7 +181,7 @@ function fetches() {
         console.log(r.status)
     })
 
-    fetch(`http://localhost:3000/top/playlist`).then(r => {
+    fetch(`http://localhost:3000/top/playlist?t=${new Date().getTime()}`).then(r => {
         r.json().then(r => geDanInformation = r)
         console.log(r.status)
     })
@@ -219,9 +223,10 @@ function getGeDanInformation(categoryCode = 0) {
         }
     }
 
+
     setTimeout(() => {
         for (let i = 0; i < items.length; i++) {
-            pictures[i].style.cssText += `background: url(${geDanInformation.playlists[i].coverImgUrl}?param=215y215)`
+            pictures[i].style.cssText += `background: url(${editUrls(geDanInformation.playlists[i].coverImgUrl)})`
             playedNumber[i].innerHTML = geDanInformation.playlists[i].playCount
             descriptions[i].innerHTML = geDanInformation.playlists[i].name
         }
@@ -231,11 +236,19 @@ function getGeDanInformation(categoryCode = 0) {
 function clickButton() {
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
-            getGeDanInformation(categories.tags[buttons.length - i].playlistTag.id)
+            getGeDanInformation(categories.tags[buttons.length - i - 1].playlistTag.id)
         })
     }
 }
 
-/*1.27 task 处理图片问题
-* 修改url
-* */
+function editUrls(url) {
+    let urlNew = ''
+    for (let i of url) {
+        if (i !== '?') {
+            urlNew += i
+        } else {
+            break
+        }
+    }
+    return urlNew + "?param=215y215"
+}
