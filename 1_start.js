@@ -1,6 +1,5 @@
 // cd E:\fehomework\NeteaseCloudMusicApi-master\NeteaseCloudMusicApi-4.14.1
-
-
+// var
 let arrayOfSliderPicturesInHtml = document.getElementsByClassName("pictures_6")
 let isLoggedIn = false;
 const head = document.getElementById("head_4")
@@ -10,6 +9,7 @@ const geDanDescription = document.getElementsByClassName("description_7")
 const boFangShu = document.getElementsByClassName("number_7")
 const boFangShu2 = document.getElementsByClassName("number_2_7")
 const userGeDan = document.getElementsByClassName("not_favorite_3")
+const divUsedForButton = document.getElementsByClassName("link_6")
 
 let sliderPicture = {
     banners: [
@@ -136,6 +136,18 @@ let geDanListByUser = {
 }
 
 main()
+
+// function
+function main() {
+    fetches()
+    setTimeout(() => {
+        getGeDanRecommendations()
+        getUserGeDanList()
+        getSliderPictures()
+        getLoginHead()
+        changeLink()
+    }, 500) // in main
+}
 
 function fetches() {
     fetch("http://localhost:3000/banner")
@@ -325,13 +337,10 @@ function changeLink() {
     }
 }
 
-function main() {
-    fetches()
-    setTimeout(() => {
-        getGeDanRecommendations()
-        getUserGeDanList()
-        getSliderPictures()
-        getLoginHead()
-        changeLink()
-    }, 500) // in main
+function directToGeDan() {
+    for (let i = 0; i < divUsedForButton.length; i++) {
+        divUsedForButton[i].onclick = function () {
+            window.open(encodeURI("./5_ge_dan_detail.html?" + "listId=" + informationOfGeDan.result[i].id))
+        }
+    }
 }

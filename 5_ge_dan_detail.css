@@ -176,5 +176,81 @@ textarea::-webkit-input-placeholder {
     flex-direction: column;
     overflow: auto;
     float: left;
+    background-color: gray;
+}
+
+#all_information_3 {
+    position: relative;
+    top: 19px;
+    left: 42px;
+    background-color: coral;
+}
+
+#list_basic_information_4 {
+    height: 204px;
+    background-color: deeppink;
+    display: flex;
+
+}
+
+#pictures_5 {
+    width: 203px;
+    height: 203px;
+    float: left;
+    background-color: lightgreen;
+    flex-direction: column;
+}
+
+#right_4__5 {
+    position: relative;
+    left: 42px;
+    top: 4px;
+    background-color: yellow;
+    height: 200px;
+    flex-direction: column;
+    width: 963px;
+}
+
+#detail_5 {
+    height: 69px;
+    /*position: relative;*/
+    background-color: lightcoral;
+}
+
+#list_name_6 {
+    font-size: 25px;
+    font-weight: bold;
+    height: 26px;
+    background-color: gold;
+    flex-direction: row;
+}
+
+#creator_6 {
+    position: relative;
+    top: calc(69px - 26px - 32px);
+    height: 32px;
+    background-color: aquamarine;
+    width: 800px;
+    bottom: 0;
+}
+
+#head_7 {
+
+}
+
+#creator_name_7 {
+
+}
+
+#create_time_7 {
+
+}
+
+#buttons_3 {
+    position: relative;
+    top: 36px;
+    width: 250px;
+    height: 36px;
+    background-color: slateblue;
 }
 
