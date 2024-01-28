@@ -184,6 +184,7 @@ textarea::-webkit-input-placeholder {
     top: 19px;
     left: 42px;
     background-color: coral;
+    height: calc(100% - 20px);
 }
 
 #list_basic_information_4 {
@@ -199,6 +200,7 @@ textarea::-webkit-input-placeholder {
     float: left;
     background-color: lightgreen;
     flex-direction: column;
+    border-radius: 5px;
 }
 
 #right_4__5 {
@@ -249,8 +251,107 @@ textarea::-webkit-input-placeholder {
 #buttons_3 {
     position: relative;
     top: 36px;
-    width: 250px;
     height: 36px;
     background-color: slateblue;
 }
 
+#buttons_4 {
+    width: 250px;
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+}
+
+.buttons_5 {
+    width: 80px;
+    height: 36px;
+    /*display: flex;*/
+    flex-direction: row;
+}
+
+.button_in_5_6 {
+    font-size: 16px;
+    display: flex;
+    line-height: 36px;
+}
+
+.checked {
+    font-weight: bold;
+}
+
+.checked::after {
+    position: relative;
+    top: 35px;
+    right: 35px;
+    content: "";
+    background-color: lightseagreen;
+    width: 16px;
+    height: 3px;
+    border-radius: 1px;
+}
+
+.number_7 {
+    font-size: 9px;
+    position: relative;
+    top: -2px;
+}
+
+.song_list_4 {
+    position: relative;
+    background-color: #ff7a9e;
+    top: 50px;
+}
+
+.songs_in_play_list_5 {
+    display: flex;
+    flex-direction: row;
+    height: 67px;
+    background-color: #d2d2d2;
+}
+
+.number_in_list_6 {
+    position: relative;
+    top: 8px;
+    height: 51px;
+    width: 51px;
+    text-align: center;
+    background-color: purple;
+}
+
+.album_picture_6 {
+    position: relative;
+    left: 3px;
+    top: 8px;
+    height: 51px;
+    width: 51px;
+    background-color: dodgerblue;
+}
+
+.singer_title_6 {
+    position: relative;
+    top: 14px;
+    left: 10px;
+    height: 39px;
+    width: 567px;
+    background-color: paleturquoise;
+}
+
+.title_7 {
+    height: 19px;
+    width: 567px;
+    font-size: 16px;
+    background-color: green;
+}
+
+.singer_7 {
+    position: relative;
+    top: 4px;
+    height: 16px;
+    font-size: 12px;
+    color: gray;
+    background-color: lightcoral;
+}
+
+.album_name_6 {
+
+}
