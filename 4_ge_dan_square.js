@@ -1,4 +1,5 @@
 // var
+// import {userInformation} from "./0_login_status";
 const head = document.getElementById("head_4")
 const username = document.getElementById("username_4")
 const buttons = document.getElementsByClassName("categories_5")
@@ -156,7 +157,6 @@ main()
 function main() {
     fetches()
     setTimeout(() => {
-        getLoginHead()
         getCategory()
         getGeDanInformation(0)
         clickButton()
@@ -164,17 +164,6 @@ function main() {
 }
 
 function fetches() {
-    fetch(`http://localhost:3000/login/refresh?t=${new Date().getTime()}`).then((r) => {
-        console.log(`login refresh status = ${r.status}`)
-    })
-
-    fetch(`http://localhost:3000/user/account?t=${new Date().getTime()}`)
-        .then((response) => {
-            response.json().then(json => userInformation = json)
-            console.log(`account status = ${response.status}`)
-        }, () => {
-            alert("No!")
-        })
 
     fetch(`http://localhost:3000/playlist/hot?t=${new Date().getTime()}`).then(r => {
         r.json().then(r => categories = r)
@@ -187,22 +176,6 @@ function fetches() {
     })
 }
 
-function getLoginHead() {
-    if (userInformation.account.id === 9119289842) {
-        isLoggedIn = false;
-        fetch("http://localhost:3000/logout").then(r => isLoggedIn = false)
-    } else
-        isLoggedIn = (userInformation.account.id != null)
-    if (isLoggedIn) {
-        if (userInformation.profile === null) {
-            head.setAttribute("src", "../img/default_head.png")
-            username.innerText = userInformation.account.userName
-        } else {
-            head.setAttribute("src", userInformation.profile.avatarUrl)
-            username.innerText = userInformation.profile.nickname.toString()
-        }
-    }
-}
 
 function getCategory() {
     for (let i = 0; i < categories.tags.length; i++) {

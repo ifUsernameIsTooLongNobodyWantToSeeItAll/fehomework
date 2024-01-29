@@ -127,7 +127,7 @@ textarea::-webkit-input-placeholder {
 #left_side_2 {
     position: absolute;
     height: 100%;
-    width: 15%;
+    width: 14%;
     border: gray solid;
     border-width: 0 1px 0 0;
     overflow: auto;
@@ -167,29 +167,29 @@ textarea::-webkit-input-placeholder {
 }
 
 #right_side_2 {
-    width: 85%;
+    width: 84%;
     height: 100%;
     position: absolute;
-    left: 250px;
+    left: 225px;
     top: 80px;
     display: flex;
     flex-direction: column;
     overflow: auto;
     float: left;
-    background-color: gray;
+    /*background-color: gray;*/
 }
 
 #all_information_3 {
     position: relative;
     top: 19px;
-    left: 42px;
-    background-color: coral;
-    height: calc(100% - 20px);
+    /*left: 20px;*/
+    /*background-color: coral;*/
+    height: calc(100% - 30px);
 }
 
 #list_basic_information_4 {
     height: 204px;
-    background-color: deeppink;
+    /*background-color: deeppink;*/
     display: flex;
 
 }
@@ -198,7 +198,7 @@ textarea::-webkit-input-placeholder {
     width: 203px;
     height: 203px;
     float: left;
-    background-color: lightgreen;
+    /*background-color: lightgreen;*/
     flex-direction: column;
     border-radius: 5px;
 }
@@ -207,52 +207,77 @@ textarea::-webkit-input-placeholder {
     position: relative;
     left: 42px;
     top: 4px;
-    background-color: yellow;
+    /*background-color: yellow;*/
     height: 200px;
     flex-direction: column;
     width: 963px;
 }
 
 #detail_5 {
-    height: 69px;
+    height: 157px;
     /*position: relative;*/
-    background-color: lightcoral;
+    /*background-color: lightcoral;*/
 }
 
 #list_name_6 {
     font-size: 25px;
     font-weight: bold;
     height: 26px;
-    background-color: gold;
+    /*background-color: gold;*/
     flex-direction: row;
+}
+
+#description_6 {
+    position: relative;
+    color: gray;
+    height: 99px;
+    font-size: 13px;
+    /*background-color: indigo;*/
 }
 
 #creator_6 {
     position: relative;
-    top: calc(69px - 26px - 32px);
+    /*top: calc(69px - 26px - 32px);*/
     height: 32px;
-    background-color: aquamarine;
+    /*background-color: aquamarine;*/
     width: 800px;
     bottom: 0;
 }
 
 #head_7 {
-
+    position: relative;
+    top: 3px;
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    /*background-color: darkturquoise;*/
 }
 
 #creator_name_7 {
-
+    position: relative;
+    width: fit-content;
+    top: -6px;
+    left: 2px;
+    height: 11px;
+    font-size: 10px;
+    /*background-color: indianred;*/
 }
 
 #create_time_7 {
-
+    position: relative;
+    width: fit-content;
+    top: -6px;
+    left: 5px;
+    font-size: 10px;
+    height: 11px;
+    /*background-color: greenyellow;*/
 }
 
 #buttons_3 {
     position: relative;
     top: 36px;
     height: 36px;
-    background-color: slateblue;
+    /*background-color: slateblue;*/
 }
 
 #buttons_4 {
@@ -284,7 +309,7 @@ textarea::-webkit-input-placeholder {
     top: 35px;
     right: 35px;
     content: "";
-    background-color: lightseagreen;
+    /*background-color: lightseagreen;*/
     width: 16px;
     height: 3px;
     border-radius: 1px;
@@ -294,11 +319,12 @@ textarea::-webkit-input-placeholder {
     font-size: 9px;
     position: relative;
     top: -2px;
+    font-family: Bahnschrift, serif;
 }
 
 .song_list_4 {
     position: relative;
-    background-color: #ff7a9e;
+    /*background-color: #ff7a9e;*/
     top: 50px;
 }
 
@@ -306,7 +332,7 @@ textarea::-webkit-input-placeholder {
     display: flex;
     flex-direction: row;
     height: 67px;
-    background-color: #d2d2d2;
+    /*background-color: #d2d2d2;*/
 }
 
 .number_in_list_6 {
@@ -315,7 +341,9 @@ textarea::-webkit-input-placeholder {
     height: 51px;
     width: 51px;
     text-align: center;
-    background-color: purple;
+    /*background-color: purple;*/
+    font-family: Bahnschrift, serif;
+    line-height: 51px;
 }
 
 .album_picture_6 {
@@ -324,7 +352,7 @@ textarea::-webkit-input-placeholder {
     top: 8px;
     height: 51px;
     width: 51px;
-    background-color: dodgerblue;
+    /*background-color: dodgerblue;*/
 }
 
 .singer_title_6 {
@@ -333,14 +361,14 @@ textarea::-webkit-input-placeholder {
     left: 10px;
     height: 39px;
     width: 567px;
-    background-color: paleturquoise;
+    /*background-color: paleturquoise;*/
 }
 
 .title_7 {
     height: 19px;
     width: 567px;
     font-size: 16px;
-    background-color: green;
+    /*background-color: green;*/
 }
 
 .singer_7 {
@@ -349,9 +377,26 @@ textarea::-webkit-input-placeholder {
     height: 16px;
     font-size: 12px;
     color: gray;
-    background-color: lightcoral;
+    /*background-color: lightcoral;*/
 }
 
 .album_name_6 {
+    position: relative;
+    left: 10px;
+    top: 26px;
+    font-size: 13px;
+    color: gray;
+    height: 15px;
+    /*background-color: pink;*/
+    width: 446px;
+}
 
+.time_6 {
+    position: relative;
+    top: 26px;
+    left: 10px;
+    font-size: 13px;
+    width: 68px;
+    /*background-color: brown;*/
+    height: 15px;
 }
