@@ -7,7 +7,7 @@
 
 #left_side_2 {
     position: absolute;
-    height: 100%;
+    height: 85%;
     width: 14%;
     border: gray solid;
     border-width: 0 1px 0 0;
@@ -49,7 +49,7 @@
 
 #right_side_2 {
     width: 84%;
-    height: 100%;
+    height: 85%;
     position: absolute;
     left: 225px;
     top: 80px;
@@ -110,8 +110,9 @@
 
 #description_6 {
     position: relative;
+    top: 10px;
     color: gray;
-    height: 99px;
+    height: 89px;
     font-size: 13px;
     /*background-color: indigo;*/
 }

@@ -31,7 +31,7 @@ html, body {
     width: 100px;
 }
 
-#search_box_second {
+#search_box_2 {
     position: absolute;
     float: left;
     top: 20px;
@@ -115,4 +115,67 @@ textarea::-webkit-input-placeholder {
     float: left;
     /*left: -50px;*/
     width: 100px;
+}
+
+#new_item_2 {
+    position: absolute;
+    width: 355px;
+    height: 652px;
+    background-color: white;
+    border: lightgray 2px solid;
+    z-index: 9999;
+    border-radius: 10px;
+}
+
+#show_3 {
+    position: relative;
+    top: 18px;
+    /*background-color: greenyellow;*/
+    height: 634px;
+    left: 17px;
+    width: 338px;
+    overflow: auto;
+}
+
+.top_place_4 {
+    position: relative;
+    /*top: 18px;*/
+    height: 36px;
+    font-size: 16px;
+    color: gray;
+    /*background-color: paleturquoise;*/
+    line-height: 36px;
+}
+
+.hot_4 {
+    position: relative;
+    height: 64px;
+    /*top: 18px;*/
+    /*background-color: #42b983;*/
+    display: flex;
+    flex-direction: row;
+}
+
+.number_in_hot_5 {
+    font-size: 20px;
+    width: 21px;
+    height: 21px;
+    /*background-color: greenyellow;*/
+    font-family: Bahnschrift, sans-serif;
+    text-align: center;
+    position: relative;
+    top: 22px;
+}
+
+.name_5 {
+    position: relative;
+    font-size: 18px;
+    height: 23px;
+    top: 21px;
+    /*background-color: brown;*/
+    left: 20px;
+}
+
+.very_hot_5 {
+    color: red;
 }

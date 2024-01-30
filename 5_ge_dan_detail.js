@@ -134,7 +134,7 @@ function main() {
             getGeDanUpInformation()
             getGeDanSongs()
         }, 300)
-    }, 100)
+    }, 50)
 }
 
 function fetches() {
@@ -203,19 +203,30 @@ function convertTime(time) {
     let seconds = time / 1000
     let minutes = Math.floor(seconds / 60)
     seconds %= 60
-    return `${minutes}:${Math.round(seconds)}`
+    seconds = Math.round(seconds)
+    if (seconds < 10) {
+        seconds = `0${seconds}`
+    } else {
+        seconds = seconds.toString()
+    }
+    return `${minutes}:${seconds}`
 }
 
 function getSingerName(index) {
     let start = ''
-    for (let i = 0; i < geDanSongsInformation.songs[index].ar.length; i++) {
-        start += geDanSongsInformation.songs[index].ar[i].name
+    start += geDanSongsInformation.songs[index].ar[0].name
+    if (geDanSongsInformation.songs[index].ar.length > 1) {
+        for (let i = 1; i < geDanSongsInformation.songs[index].ar.length; i++) {
+            start += `/${geDanSongsInformation.songs[index].ar[i].name}`
+        }
     }
+
     return start
 }
 
 function getSongName(index) {
-    let start = geDanSongsInformation.songs[index].name
+    let start = ''
+    start += geDanSongsInformation.songs[index].name
     if (geDanSongsInformation.songs[index].alia.length !== 0) {
         for (let i = 0; i < geDanSongsInformation.songs[index].alia.length; i++) {
             start += ` (${geDanSongsInformation.songs[index].alia[i]})`

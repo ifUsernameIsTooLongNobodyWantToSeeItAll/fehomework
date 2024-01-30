@@ -88,7 +88,10 @@ function fetches() {
 function getLoginHead() {
     if (userInformation.account.id === 9119289842) {
         isLoggedIn = false;
-        fetch("http://localhost:3000/logout").then(r => isLoggedIn = false)
+        fetch("http://localhost:3000/logout").then(r => {
+            isLoggedIn = false
+            console.log(r.status)
+        })
     } else
         isLoggedIn = (userInformation.account.id != null)
     if (isLoggedIn) {
