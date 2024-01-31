@@ -42,12 +42,13 @@ function main() {
             setRed()
             getHot()
         })
-
-        otherElementIn0.addEventListener("click", function () {
-            removeElement()
-        })
-
-        otherElementInOther.addEventListener("click", removeElement)
+        if (otherElementIn0 !== null) {
+            otherElementIn0.addEventListener("click", function () {
+                removeElement()
+            })
+        } else {
+            otherElementInOther.addEventListener("click", removeElement)
+        }
     }, 100)
 }
 
