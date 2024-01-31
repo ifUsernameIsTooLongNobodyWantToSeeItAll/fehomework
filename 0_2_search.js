@@ -15,9 +15,15 @@ let hotList = {
     ],
     message: null
 }
+let keepHot = undefined
 let listAddPls = undefined
+// let offset = 0
+let otherElementIn0 = document.getElementById("under_0")
+let otherElementInOther = document.getElementById("under_1")
 const clickShow = document.getElementById("search_box_2")
 const elementAddPls = document.getElementById("right_side_1")
+const clickButton = document.getElementById("button_3")
+const inputBox = document.getElementById("input_3")
 let itemsInList = document.getElementsByClassName("hot_4")
 let numberHot = document.getElementsByClassName("number_in_hot_5")
 let nameHot = document.getElementsByClassName("name_5")
@@ -28,16 +34,20 @@ main()
 function main() {
     fetches()
     setTimeout(() => {
-        clickShow.onmouseover = function () {
+        clickShow.addEventListener("click", function () {
             showIt()
             listAddPls = document.getElementById("show_3")
+            // newItem = document.getElementById("new_item_2")
             addElements()
             setRed()
             getHot()
-        }
-        clickShow.onmouseout = function () {
+        })
+
+        otherElementIn0.addEventListener("click", function () {
             removeElement()
-        }
+        })
+
+        otherElementInOther.addEventListener("click", removeElement)
     }, 100)
 }
 
@@ -58,8 +68,9 @@ function showIt() {
 }
 
 function getHot() {
-    for (let i = 0; i < itemsInList.length; i++) {
+    for (let i = 0; i < 20; i++) {
         numberHot[i].innerHTML = getNumber(i)
+        // debugs("line 83", i)
         nameHot[i].innerHTML = hotList.data[i].searchWord
     }
 }
@@ -85,6 +96,52 @@ function getNumber(i) {
 }
 
 function removeElement() {
+    keepHot = hotList
+    let llDelete = document.getElementsByClassName("number_in_hot_5")
+    let llmDelete = document.getElementsByClassName("name_5")
+    let littleDelete = document.getElementsByClassName("hot_4")
+    // setTimeout(() => {
+    for (const littleDeleteElement of littleDelete) {
+        littleDeleteElement.remove()
+    }
+
+    for (const llDeleteElement of llDelete) {
+        llDeleteElement.remove()
+    }
+    for (const llm of llmDelete) {
+        llm.remove()
+    }
     let deleteElement = document.getElementById("new_item_2")
     deleteElement.remove()
+    // }, 3000)
+
+    // debugs("line 102")
 }
+
+function directToSearchPage() {
+    clickButton.onclick = function () {
+        window.open(encodeURI("./6_search.html?" + "keyWord=" + inputBox.value))
+    }
+}
+
+// function debugs(message = "", i = 0) {
+//     if (hotList.data[i] === undefined || hotList.data[i] == null) {
+//         console.log(`${message}: hot list data is null! (i = ${i})`)
+//     }
+//     if (keepHot == null) {
+//         console.log(`${message}: keep hot is null!`)
+//     }
+//     if (message === "line 74")
+//         console.log(
+//             `${message}
+//         hotList.data.length = ${hotList.data.length}
+//         numberHot.length = ${numberHot.length}
+//         itemsInList.length = ${itemsInList.length}`
+//         )
+//     if (i === -1) {
+//         for (let i = 0; i < numberHot.length; i++) {
+//             console.log(`i = ${i}: ${nameHot[i].innerHTML}`)
+//         }
+//     }
+// }
+//
