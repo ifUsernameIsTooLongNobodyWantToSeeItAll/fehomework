@@ -21,12 +21,15 @@ let listAddPls = undefined
 let otherElementIn0 = document.getElementById("under_0")
 let otherElementInOther = document.getElementById("under_1")
 const clickShow = document.getElementById("search_box_2")
-const elementAddPls = document.getElementById("right_side_1")
+const elementAddPlsIn0 = document.getElementById("right_side_1")
+const elementAddPlsIn45AndSoOn = document.getElementById("right_side_2")
+const elementAddPlsIn23 = document.getElementById("login_window_2")
 const clickButton = document.getElementById("button_3")
 const inputBox = document.getElementById("input_3")
 let itemsInList = document.getElementsByClassName("hot_4")
 let numberHot = document.getElementsByClassName("number_in_hot_5")
 let nameHot = document.getElementsByClassName("name_5")
+let page
 // main
 main()
 
@@ -49,6 +52,10 @@ function main() {
         } else {
             otherElementInOther.addEventListener("click", removeElement)
         }
+        setTimeout(() => {
+            pressEnterToSearch()
+            directToSearchPage()
+        }, 200)
     }, 100)
 }
 
@@ -65,7 +72,12 @@ function showIt() {
     let addElement = document.createElement("div")
     addElement.innerHTML = add
     addElement.setAttribute("id", "new_item_2")
-    elementAddPls.appendChild(addElement)
+    if (page === 1)
+        elementAddPlsIn0.appendChild(addElement)
+    else if (page === 2 || page === 3)
+        elementAddPlsIn23.appendChild(addElement)
+    else
+        elementAddPlsIn45AndSoOn.appendChild(addElement)
 }
 
 function getHot() {
@@ -101,22 +113,22 @@ function removeElement() {
     let llDelete = document.getElementsByClassName("number_in_hot_5")
     let llmDelete = document.getElementsByClassName("name_5")
     let littleDelete = document.getElementsByClassName("hot_4")
-    // setTimeout(() => {
-    for (const littleDeleteElement of littleDelete) {
-        littleDeleteElement.remove()
-    }
-
-    for (const llDeleteElement of llDelete) {
-        llDeleteElement.remove()
-    }
-    for (const llm of llmDelete) {
-        llm.remove()
-    }
     let deleteElement = document.getElementById("new_item_2")
-    deleteElement.remove()
-    // }, 3000)
+    // setTimeout(() => {
+    if (deleteElement != null) {
+        for (const littleDeleteElement of littleDelete) {
+            littleDeleteElement.remove()
+        }
 
-    // debugs("line 102")
+        for (const llDeleteElement of llDelete) {
+            llDeleteElement.remove()
+        }
+        for (const llm of llmDelete) {
+            llm.remove()
+        }
+
+        deleteElement.remove()
+    }
 }
 
 function directToSearchPage() {
@@ -125,24 +137,10 @@ function directToSearchPage() {
     }
 }
 
-// function debugs(message = "", i = 0) {
-//     if (hotList.data[i] === undefined || hotList.data[i] == null) {
-//         console.log(`${message}: hot list data is null! (i = ${i})`)
-//     }
-//     if (keepHot == null) {
-//         console.log(`${message}: keep hot is null!`)
-//     }
-//     if (message === "line 74")
-//         console.log(
-//             `${message}
-//         hotList.data.length = ${hotList.data.length}
-//         numberHot.length = ${numberHot.length}
-//         itemsInList.length = ${itemsInList.length}`
-//         )
-//     if (i === -1) {
-//         for (let i = 0; i < numberHot.length; i++) {
-//             console.log(`i = ${i}: ${nameHot[i].innerHTML}`)
-//         }
-//     }
-// }
-//
+function pressEnterToSearch() {
+    inputBox.addEventListener("keyup", function (e) {
+        if (e.key === 'enter') {
+            window.open(encodeURI("./6_search.html?" + "keyWord=" + inputBox.value))
+        }
+    })
+}

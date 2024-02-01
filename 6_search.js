@@ -1,4 +1,5 @@
 //var
+page = 6
 let searchValueSingle = {
     result: {
         searchQcReminder: null,
@@ -60,29 +61,27 @@ let timeInSearchedSongs = document.getElementsByClassName("time_7")
 
 // main
 main()
-
 // function
 function main() {
-    // decode()
-    keyWord = "Love story"// decode()
+    decode()
+    keyWord = decode()
     fetches()
 }
 
 function fetches() {
-
     fetch(`http://localhost:3000/cloudsearch?keywords=${keyWord}&limit=100&type=1`)
         .then((r) => r.json())
         .then((r) => searchValueSingle = r)
         .then(() => {
-            console.log("1: " + searchValueSingle.result.songs.length)
+            // console.log("1: " + searchValueSingle.result.songs.length)
             getNewElementOfSongs()
         })
         .then(() => {
-            console.log("2: " + searchValueSingle.result.songs.length)
+            // console.log("2: " + searchValueSingle.result.songs.length)
             getValuesForSingle()
         }).then(() => {
-        console.log("3: " + searchValueSingle.result.songs.length)
-        console.log("3: " + tableOneRow.length)
+        // console.log("3: " + searchValueSingle.result.songs.length)
+        // console.log("3: " + tableOneRow.length)
         getSearchedInformationForSingle()
     })
 
@@ -96,10 +95,13 @@ function fetches() {
 function decode() {
     let decodeStr = decodeURI(document.URL)
     decodeStr = decodeStr.slice(decodeStr.indexOf('=') + 1)
+    console.log(decodeStr)
     return decodeStr
 }
 
 function getNewElementOfSongs() {
+    if (searchValueSingle.result == null)
+        return
     if (tableOneRow.length < searchValueSingle.result.songs.length) {
         for (let i = tableOneRow.length; i < searchValueSingle.result.songs.length; i++) {
             let addElement = "<div class=\"number_in_search_result_7\"></div>\n" +
@@ -129,7 +131,7 @@ function getSearchedInformationForSingle() {
         numberInSearchResult[i].innerHTML = (i + 1).toString()
         albumPicture[i].style.cssText += `background: url(${searchValueSingle.result.songs[i].al.picUrl + "?param=51y51"})`
         songSearched[i].innerHTML = searchValueSingle.result.songs[i].name
-        if (searchValueSingle.result.songs[i].alia.length != 0) {
+        if (searchValueSingle.result.songs[i].alia.length !== 0) {
             for (const s of searchValueSingle.result.songs[i].alia) {
                 songSearched[i].innerHTML += ` (${s})`
             }
@@ -147,7 +149,6 @@ function getSingerNameOfSongs(i) {
         artist += '/'
         artist += searchValueSingle.result.songs[i].ar[j].name
     }
-
     return artist
 }
 
@@ -161,6 +162,4 @@ function getTime(i) {
     return `${m}:${s}`
 }
 
-// function debugs(msg) {
-//     // for(let i = 0; i < )
-// }
+

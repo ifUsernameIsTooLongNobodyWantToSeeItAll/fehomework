@@ -1,4 +1,5 @@
 // var
+page = 4
 // import {userInformation} from "./0_login_status";
 const head = document.getElementById("head_4")
 const username = document.getElementById("username_4")
