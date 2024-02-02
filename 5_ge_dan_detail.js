@@ -130,25 +130,33 @@ function main() {
     getID = decode()
     setTimeout(() => {
         fetches()
-        setTimeout(() => {
-            addElement()
-            getGeDanUpInformation()
-            getGeDanSongs()
-        }, 300)
     }, 50)
 }
 
 function fetches() {
-    fetch(`http://localhost:3000/playlist/detail?id=${getID}`)
-        .then(r => {
-            r.json().then(r => geDanDetailInformation = r)
-            console.log(`Ge Dan status = ${r.status}`)
-        })
+    // fetch(`http://localhost:3000/playlist/detail?id=${getID}&t=${new Date().getTime()}`)
+    //     .then(r => {
+    //         r.json().then(r => geDanDetailInformation = r)
+    //         console.log(`Ge Dan status = ${r.status}`)
+    //     })
+    //
+    // fetch(`http://localhost:3000/playlist/track/all?id=${getID}&t=${new Date().getTime()}`)
+    //     .then(r => {
+    //         r.json().then(r => geDanSongsInformation = r)
+    //         console.log(`songs status = ${r.status}`)
+    //     })
 
-    fetch(`http://localhost:3000/playlist/track/all?id=${getID}`)
-        .then(r => {
-            r.json().then(r => geDanSongsInformation = r)
-            console.log(`songs status = ${r.status}`)
+    fetch(`http://localhost:3000/playlist/detail?id=${getID}&t=${new Date().getTime()}`)
+        .then(r => r.json())
+        .then(r => geDanDetailInformation = r)
+
+    fetch(`http://localhost:3000/playlist/track/all?id=${getID}&t=${new Date().getTime()}`)
+        .then(r => r.json())
+        .then(r => geDanSongsInformation = r)
+        .then(() => {
+            addElement()
+            getGeDanUpInformation()
+            getGeDanSongs()
         })
 }
 

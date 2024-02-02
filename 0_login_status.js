@@ -84,7 +84,6 @@ function fetches() {
 
 }
 
-
 function getLoginHead() {
     if (userInformation.account.id === 9119289842) {
         isLoggedIn = false;
