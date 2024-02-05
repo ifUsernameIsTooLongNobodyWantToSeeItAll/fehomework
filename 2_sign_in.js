@@ -35,14 +35,18 @@ function main() {
 }
 
 function fetches() {
-    fetch("http://localhost:3000/login/qr/key" + '?t=' + Date.now()).then(r => {
-        r.json().then((json) => getKey = json)
-        console.log(`getKey status = ${r.status}`)
-        fetch(`http://localhost:3000/login/qr/create?qrimg=true&key=${key}?t=${new Date().getTime()}`).then(r => {
-            r.json().then(r => getImg = r)
-            console.log(`make qrcode status = ${r.status}`)
-        })
-    })
+    // fetch("http://localhost:3000/login/qr/key" + '?t=' + Date.now()).then(r => {
+    //     r.json().then((json) => getKey = json)
+    //     console.log(`getKey status = ${r.status}`)
+    //     fetch(`http://localhost:3000/login/qr/create?qrimg=true&key=${key}?t=${new Date().getTime()}`).then(r => {
+    //         r.json().then(r => getImg = r)
+    //         console.log(`make qrcode status = ${r.status}`)
+    //     })
+    // })
+
+    fetch("http://localhost:3000/login/qr/key" + '?t=' + Date.now())
+        .then(r => r.json())
+        .then(() => fetch(`http://localhost:3000/login/qr/create?qrimg=true&key=${key}?t=${new Date().getTime()}`).then(r => r.json()).then(r => getImg = r))
 }
 
 function login() {

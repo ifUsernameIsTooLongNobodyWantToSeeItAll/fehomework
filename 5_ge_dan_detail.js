@@ -125,9 +125,10 @@ let songTitleInList = document.getElementsByClassName("title_7")
 let singerInList = document.getElementsByClassName("singer_7")
 //main
 main()
+
 //function
 function main() {
-    getID = decode()
+    getID =  decode()
     setTimeout(() => {
         fetches()
     }, 50)
@@ -242,4 +243,13 @@ function getSongName(index) {
         }
     }
     return start
+}
+
+function directToGeDan() {
+    for (let i = 0; i < songCountInList.length; i++) {
+        songCountInList[i].ondblclick = function () {
+            // window.open(encodeURI("./5_ge_dan_detail.html?" + "listId=" + informationOfGeDan.result[i].id))
+            window.open(encodeURI("./try_1.html?songId=" + geDanSongsInformation.songs[i].id))
+        }
+    }
 }
