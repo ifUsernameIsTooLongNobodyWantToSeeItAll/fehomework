@@ -109,6 +109,7 @@ function plays() {
             time = setInterval(function (){
                 let m = Math.floor(audioOfSong.currentTime / 60)
                 let s = Math.floor(audioOfSong.currentTime % 60)
+
                 m = (m <= 10 ? `0${m}` : `${m}`)
                 s = (s <= 10 ? `0${s}` : `${s}`)
                 totalTime.innerHTML = `${m}:${s}`
