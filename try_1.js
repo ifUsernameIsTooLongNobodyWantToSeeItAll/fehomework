@@ -29,7 +29,8 @@ let songOtherInformation = {
 const albumPicture = document.getElementById("album_picture_4")
 const titleName = document.getElementById("title_6")
 const singerName = document.getElementById("singer_6")
-let audioOfSong = document.getElementById("music_to_play_4")
+let audioOfSong
+const nowTime = document.getElementById("now_time_6")
 const totalTime = document.getElementById("total_time_6")
 const leftPart = document.getElementById("left_place_7")
 const rightPart = document.getElementById("right_place_7")
@@ -39,10 +40,13 @@ let stopButton = document.getElementById("stop_continue_button_6")
 const pictureButton = document.getElementById("continue_or_stop_7")
 //main
 main()
+
 //function
 function main() {
-    songId = 17753288// decode()
-    fetches(songId)
+    songId = 25910908// decode()
+    document.addEventListener("DOMContentLoaded", function () {
+        fetches(songId)
+    })
 }
 
 // function decode() {
@@ -52,18 +56,21 @@ function main() {
 // }
 
 function fetches(id, level = "exhigh") {
-    fetch(`http://localhost:3000/song/detail?ids=${id}`)
-        .then(r => r.json())
-        .then(r => songOtherInformation = r)
-        .then(() => {
-            getBasicInformation()
+    fetch(`http://localhost:3000/song/detail?ids=${id}&timestamp=${new Date().getTime()}`)
+        .then(r => {
+            r.json().then(r => songOtherInformation = r)
+                .then(() => {
+                    getBasicInformation()
+                })
+            console.log(`song information status = ${r.status}`)
         })
-    fetch(`http://localhost:3000/song/url/v1?id=${id}&level=${level}`)
-        .then(r => r.json())
-        .then(r => songAudioInformation = r)
-        .then(() => start())
 
-
+    fetch(`http://localhost:3000/song/url/v1?id=${id}&level=${level}&timestamp=${new Date().getTime()}`)
+        .then(r => {
+            r.json().then(r => songAudioInformation = r)
+                .then(() => getAudioInformation()).then(() => plays())
+            console.log(`song status = ${r.status}`)
+        })
 }
 
 function getBasicInformation() {
@@ -85,20 +92,24 @@ function getSingerName() {
     return ar
 }
 
-function start() {
-    document.addEventListener("DOMContentLoaded", function () {
-        getAudioInformation()
-        plays()
-    })
+function getAudioInformation() {
+    audioOfSong = document.getElementById("music_to_play_4")
+    audioOfSong.setAttribute("src", songAudioInformation.data[0].url)
+    console.log(audioOfSong.duration)
 }
 
-function getAudioInformation() {
-    audioOfSong.setAttribute("src", songAudioInformation.data[0].url)
-}
 function plays() {
     let time = undefined
+    // document.addEventListener("DOMContentLoaded", function() {
+
     let audioTime = audioOfSong.duration
-    totalTime.innerHTML = (Math.floor(audioTime / 60) >= 10 ? `0${audioTime / 60}` : `${audioTime / 60}`) + ':' + (Math.floor(audioTime % 60) >= 10 ? `0${audioTime % 60}` : `${audioTime % 60}`)
+    console.log(audioTime)
+    let m = Math.floor(audioTime / 60)
+    let s = Math.floor(audioTime % 60)
+    m = (m < 10) ? `0${m}` : `${m}`
+    s = (s < 10) ? `0${s}` : `${s}`
+    totalTime.innerHTML = `${m}:${s}`
+    console.log(totalTime.innerHTML)
     stopButton.addEventListener("click", function () {
         if (!audioOfSong.paused) {
             audioOfSong.pause()
@@ -106,13 +117,13 @@ function plays() {
             clearInterval(time)
         } else {
             audioOfSong.play()
-            time = setInterval(function (){
+            time = setInterval(function () {
                 let m = Math.floor(audioOfSong.currentTime / 60)
                 let s = Math.floor(audioOfSong.currentTime % 60)
 
-                m = (m <= 10 ? `0${m}` : `${m}`)
-                s = (s <= 10 ? `0${s}` : `${s}`)
-                totalTime.innerHTML = `${m}:${s}`
+                m = (m < 10 ? `0${m}` : `${m}`)
+                s = (s < 10 ? `0${s}` : `${s}`)
+                nowTime.innerHTML = `${m}:${s}`
                 nowThisPlace.style.left = (audioOfSong.currentTime / audioTime) * 100 + '%'
                 leftPart.style.width = (audioOfSong.currentTime / audioTime) * 100 + '%'
                 rightPart.style.width = (1 - (audioOfSong.currentTime / audioTime)) * 100 + '%'
@@ -124,7 +135,7 @@ function plays() {
             let startPositionX
             let barPositionX
             let result
-            progressBar.addEventListener("mousedown", function(event) {
+            progressBar.addEventListener("mousedown", function (event) {
                 isOnIt = true
                 isPressedDown = true
                 startPositionX = event.clientX
@@ -154,4 +165,6 @@ function plays() {
             }
         }
     })
+    // })
+
 }
