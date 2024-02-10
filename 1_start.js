@@ -1,7 +1,7 @@
 // cd E:\fehomework\NeteaseCloudMusicApi-master\NeteaseCloudMusicApi-4.14.1
 // var
 // import {userInformation} from "./0_login_status";
-page = 1
+window.page = 1
 let arrayOfSliderPicturesInHtml = document.getElementsByClassName("pictures_6")
 const geDanRecommendations = document.getElementsByClassName("pic_7")
 const geDanDescription = document.getElementsByClassName("description_7")

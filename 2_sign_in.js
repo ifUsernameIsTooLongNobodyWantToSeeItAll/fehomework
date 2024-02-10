@@ -1,5 +1,5 @@
 // 变量定义
-page = 2
+window.page = 2
 let key;
 let getKey = {
     data: {

@@ -76,23 +76,23 @@ function fetches() {
             console.log(`account status = ${response.status}`)
         }, () => {
             alert("No!")
+        }).then((resolve, reject) => {
+        if (userInformation.account === null) {
+            reject("null")
+        } else {
+            resolve(userInformation.account)
+        }
+    }).then(() => {
+        fetch(`http://localhost:3000/login/refresh?t=${new Date().getTime()}`).then((r) => {
+            console.log(`login refresh status = ${r.status}`)
         })
-
-    fetch(`http://localhost:3000/login/refresh?t=${new Date().getTime()}`).then((r) => {
-        console.log(`login refresh status = ${r.status}`)
+    }, () => {
+        console.log("Not logged in")
     })
-
 }
 
 function getLoginHead() {
-    if (userInformation.account.id === 9119289842) {
-        isLoggedIn = false;
-        fetch("http://localhost:3000/logout").then(r => {
-            isLoggedIn = false
-            console.log(r.status)
-        })
-    } else
-        isLoggedIn = (userInformation.account.id != null)
+    isLoggedIn = (userInformation.account != null && userInformation.account.id != null)
     if (isLoggedIn) {
         if (userInformation.profile === null) {
             head.setAttribute("src", "../img/default_head.png")

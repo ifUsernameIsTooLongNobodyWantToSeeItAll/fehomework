@@ -1,1 +1,7 @@
-///song/detail
+// var
+let doms = {
+    // audio:
+}
+// main
+
+// function

@@ -63,17 +63,20 @@
 #bottom_place_2 {
     height: 80px;
     width: 100%;
-    background-color: darkgreen;
+    /*background-color: darkgreen;*/
     position: fixed;
     bottom: 0;
     display: flex;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid;
 }
 
 #left_place_3 {
     position: relative;
     top: 9px;
     left: 26px;
-    background-color: sandybrown;
+    /*background-color: sandybrown;*/
     display: flex;
     width: 395px;
     height: 62px;
@@ -83,15 +86,15 @@
     height: 62px;
     width: 62px;
     border-radius: 62px;
-    background-color: rebeccapurple;
-    fuck: you;
+    /*background-color: rebeccapurple;*/
+    /*fuck: you;*/
 }
 
 #title_and_singer_name_and_other_4 {
     position: relative;
     left: 10px;
     width: 325px;
-    background-color: blue;
+    /*background-color: blue;*/
     height: 42px;
     top: 10px;
 }
@@ -102,14 +105,14 @@
     overflow: hidden;
 
     height: 18px;
-    background-color: dodgerblue;
+    /*background-color: dodgerblue;*/
 }
 
 #title_6 {
     font-size: 14px;
     white-space: nowrap;
     text-overflow: ellipsis;
-    background-color: pink;
+    /*background-color: pink;*/
 }
 
 #singer_6 {
@@ -117,7 +120,7 @@
     color: gray;
     white-space: nowrap;
     text-overflow: ellipsis;
-    background-color: darkseagreen;
+    /*background-color: darkseagreen;*/
 }
 
 #middle_line_6 {
@@ -126,14 +129,14 @@
 
 #other_icons_5 {
     height: 22px;
-    background-color: deeppink;
+    /*background-color: deeppink;*/
 }
 
 #middle_place_3 {
     position: absolute;
     width: 534px;
     height: 53px;
-    background: orchid;
+    /*background: orchid;*/
     left: 0;
     right: 0;
     top: 0;
@@ -146,27 +149,27 @@
     height: 40px;
     width: 210px;
     margin: auto;
-    background-color: cyan;
+    /*background-color: cyan;*/
     display: flex;
     flex-direction: row;
 }
 
 #progress_long_5 {
     height: 13px;
-    background-color: orange;
+    /*background-color: orange;*/
     display: flex;
     flex-direction: row;
     font-size: 9px;
 }
 
 .time_6 {
-    color: gray;
+    color: darkgray;
 }
 
 #progress_bar_6 {
     width: 468px;
     height: 6px;
-    background-color: #E5E6E8;
+    background-color: #e5e6e8;
     border-radius: 3px;
     position: relative;
     top: 3px;
@@ -215,7 +218,7 @@
     left: 45px;
     width: 40px;
     height: 40px;
-    background-color: lightskyblue;
+    /*background-color: lightskyblue;*/
     border-radius: 40px;
 }
 
@@ -223,7 +226,7 @@
     width: 17px;
     height: 17px;
     /*border-radius: 17px;*/
-    background-color: greenyellow;
+    /*background-color: greenyellow;*/
     margin: auto;
     position: relative;
     top: 12px;

@@ -1,5 +1,5 @@
 // var
-page = 3
+window.page = 3
 const telephoneObject = document.getElementById("phone_number_7")
 const passwordObject = document.getElementById("password_input_7")
 // const password = passwordObject.value

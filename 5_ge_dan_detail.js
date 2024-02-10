@@ -128,7 +128,7 @@ main()
 
 //function
 function main() {
-    getID =  decode()
+    getID = decode()
     setTimeout(() => {
         fetches()
     }, 50)
@@ -154,8 +154,9 @@ function fetches() {
     fetch(`http://localhost:3000/playlist/track/all?id=${getID}&t=${new Date().getTime()}`)
         .then(r => r.json())
         .then(r => geDanSongsInformation = r)
+        .then(() => addElement())
         .then(() => {
-            addElement()
+            directToSongs()
             getGeDanUpInformation()
             getGeDanSongs()
         })
@@ -245,11 +246,14 @@ function getSongName(index) {
     return start
 }
 
-function directToGeDan() {
+function directToSongs() {
     for (let i = 0; i < songCountInList.length; i++) {
-        songCountInList[i].ondblclick = function () {
+        songCountInList[i].onclick = function () {
             // window.open(encodeURI("./5_ge_dan_detail.html?" + "listId=" + informationOfGeDan.result[i].id))
-            window.open(encodeURI("./try_1.html?songId=" + geDanSongsInformation.songs[i].id))
+            // window.open(encodeURI("./try_1.html?songId=" + geDanSongsInformation.songs[i].id))
+            window.songId = geDanSongsInformation.songs[i].id
+            alert("You clicked it!!!")
+            playAll(window.songId)
         }
     }
 }

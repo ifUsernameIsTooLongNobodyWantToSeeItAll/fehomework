@@ -72,9 +72,10 @@ function showIt() {
     let addElement = document.createElement("div")
     addElement.innerHTML = add
     addElement.setAttribute("id", "new_item_2")
-    if (page === 1)
+    console.log(window.page)
+    if (window.page === 1)
         elementAddPlsIn0.appendChild(addElement)
-    else if (page === 2 || page === 3)
+    else if (window.page === 2 || window.page === 3)
         elementAddPlsIn23.appendChild(addElement)
     else
         elementAddPlsIn45AndSoOn.appendChild(addElement)

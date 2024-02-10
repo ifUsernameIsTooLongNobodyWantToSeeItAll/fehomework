@@ -1,0 +1,135 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#all_1 {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(pink, #202020);
+}
+
+#top_button_2 {
+    position: absolute;
+    top: 25px;
+    /*width: 41px;*/
+    width: 100%;
+    height: 41px;
+    background-color: #42b983;
+}
+
+#go_to_last_page_3 {
+    position: relative;
+    left: 40px;
+    width: 41px;
+    height: 41px;
+    background-color: blue;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+#pictures_4 {
+    width: 17px;
+    height: 17px;
+    position: relative;
+    top: 12px;
+    left: 12px;
+}
+
+#middle_2 {
+    position: absolute;
+    top: 106px;
+    width: 100%;
+    height: 700px;
+    background-color: #ff7a9e;
+}
+
+#left_album_picture_3 {
+    position: absolute;
+    width: 49%;
+    height: 100%;
+    background-color: darkorange;
+}
+
+#7_album_picture_4 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    width: 405px;
+    height: 405px;
+    border-radius: 405px;
+    background-color: lightgreen;
+}
+
+#right_lyrics_3 {
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background-color: pink;
+}
+
+#basic_information_4 {
+    position: fixed;
+    width: 100%;
+    height: 52px;
+    background-color: #0dffca;
+}
+
+#first_5 {
+    font-size: 23px;
+    height: 26px;
+    background-color: deeppink;
+}
+
+#second_5 {
+    position: relative;
+    top: 6px;
+    font-size: 14px;
+    height: 18px;
+    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+}
+
+#al_content_6 {
+    max-width: 326px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#singers_6 {
+    position: relative;
+    left: 33px;
+}
+
+#singer_content_6 {
+    position: relative;
+    left: 33px;
+}
+
+#lyrics_5 {
+    height: 510px;
+    position: relative;
+    top: 40px;
+    background-color: lightpink;
+    overflow: hidden;
+}
+ul {
+    transition: 0.5s;
+}
+#lyrics_5 li {
+    height: 50px;
+    line-height: 50px;
+    font-size: 19px;
+    list-style: none;
+}
+
+.now {
+    font-weight: bold;
+}
+
