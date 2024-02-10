@@ -1,32 +1,32 @@
-function playAll(songId) {
-    let songAudioInformation = {
-        data: [{
-            id: null, url: null,
-        }]
-    }
+let songAudioInformation = {
+    data: [{
+        id: null, url: null,
+    }]
+}
 
-    let songOtherInformation = {
-        songs: [{
-            name: null, ar: [{
-                id: null, name: null,
-            }], alia: [], al: {
-                picUrl: null,
-            }
-        }], code: null,
-    }
-    const albumPicture = document.getElementById("album_picture_4")
-    const titleName = document.getElementById("title_6")
-    const singerName = document.getElementById("singer_6")
-    let audioOfSong
-    const nowTime = document.getElementById("now_time_6")
-    const totalTime = document.getElementById("total_time_6")
-    const leftPart = document.getElementById("left_place_7")
-    const rightPart = document.getElementById("right_place_7")
-    const progressBar = document.getElementById("progress_bar_6")
-    const nowThisPlace = document.getElementById("now_7")
-    let stopButton = document.getElementById("stop_continue_button_6")
-    const pictureButton = document.getElementById("continue_or_stop_7")
-    let level = 'exhigh'
+let songOtherInformation = {
+    songs: [{
+        name: null, ar: [{
+            id: null, name: null,
+        }], alia: [], al: {
+            picUrl: null,
+        }
+    }], code: null,
+}
+const albumPicture = document.getElementById("album_picture_4")
+const titleName = document.getElementById("title_6")
+const singerName = document.getElementById("singer_6")
+let audioOfSong = undefined
+const nowTime = document.getElementById("now_time_6")
+const totalTime = document.getElementById("total_time_6")
+const leftPart = document.getElementById("left_place_7")
+const rightPart = document.getElementById("right_place_7")
+const progressBar = document.getElementById("progress_bar_6")
+const nowThisPlace = document.getElementById("now_7")
+let stopButton = document.getElementById("stop_continue_button_6")
+const pictureButton = document.getElementById("continue_or_stop_7")
+let level = 'exhigh'
+function playAll(songId) {
     // document.addEventListener("DOMContentLoaded", function () {
     console.log(54)
     fetch(`http://localhost:3000/song/detail?ids=${songId}&timestamp=${new Date().getTime()}`)
@@ -132,4 +132,10 @@ function playAll(songId) {
             // debugs(81)
             console.log(`song status = ${r.status}`)
         })
+}
+
+function click() {
+    albumPicture.onclick = function () {
+        window.open(encodeURI("./7_play_detail.html"))
+    }
 }
