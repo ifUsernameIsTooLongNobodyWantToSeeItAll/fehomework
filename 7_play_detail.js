@@ -7,12 +7,8 @@ let finalLyrics = []
 const placePutLyrics = document.getElementById("lyrics_5")
 const everyLyrics = document.querySelector("#lyrics_5 ul")
 const albumPictureInPlayPage = document.getElementById("left_album_picture_3")
-
-// let doms = {
-//     audio: window.audioOfSong,
-//     box: document.getElementById("lyrics_5"),
-//     ul: document.querySelector("#lyrics_5 ul")
-// }
+const goToLastPage = document.getElementById("go_to_last_page_3")
+const allBackground = document.getElementById("all_1")
 let boxClientHeight
 let liHeight
 let maxOffset
@@ -36,8 +32,10 @@ function main() {
             gatherInformationToLyrics()
             makeItTogether()
             createElement()
+            setClick()
             getValue()
             makeLyricsMove()
+            getBackgroundColors()
         })
 }
 
@@ -96,7 +94,6 @@ function getLyricListInformation(lyrics) {
     let information = lyrics.slice(0, place + 1)
     let newLyrics = lyrics.slice(place + 2)
     // console.log(information)
-    // console.log("\n\n\n")
     // console.log(newLyrics)
     informationObject = getJsonFromLyricsInformation(information, arrayNumber)
     informationLyrics = changeTime(getLyrics(newLyrics))
@@ -233,4 +230,60 @@ function getNowLyrics() {
         }
     }
     return finalLyrics.length - 1
+}
+
+function setClick() {
+    goToLastPage.onclick = function () {
+        window.history.go(-1)
+    }
+}
+
+function getBackgroundColors() {
+    // Adapted from https://kuangyx.cn/docs/%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E6%8F%90%E5%8F%96%E5%9B%BE%E7%89%87%E4%B8%BB%E9%A2%98%E8%89%B2.html#%E4%B8%80%E3%80%81%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E7%BB%98%E5%88%B6%E5%9C%A8-canvas-%E4%B8%8A
+    const pictureWidth = albumPictureInPlayPage.width
+    const pictureHeight = albumPictureInPlayPage.height
+    const canvas = document.createElement('canvas')
+    canvas.width = pictureWidth
+    canvas.height = pictureHeight
+    const context = canvas.getContext('2d')
+    context.drawImage(this, 0, 0)
+    let dataOfImg = context.getImageData(0, 0, pictureWidth, pictureHeight).data
+    dataOfImg = Array.from(dataOfImg)
+    const colorList = {}
+    let i = 0
+    while (i < dataOfImg.length) {
+        const r = dataOfImg[i]
+        const g = dataOfImg[i + 1]
+        const b = dataOfImg[i + 2]
+        const a = dataOfImg[i + 3]
+        i += 4
+        const key = [r, g, b, a]
+        key in colorList ? ++colorList[key] : (colorList[key] = 1)
+    }
+    let arrayOfColor = []
+    for (let key in colorList) {
+        arrayOfColor.push({
+            rgba: key,
+            num: colorList[key]
+        })
+    }
+    arrayOfColor = arrayOfColor.sort((a, b) => b.num - a.num)
+    // console.log(arrayOfColor)
+    const arrFirst = arrayOfColor[0].rgba
+    // console.log(arrFirst)
+    let numbers = []
+    let start = 0, end = 0, count = 0
+    for(let i = 0; i < arrFirst.length; i++) {
+        if(arrFirst[i] === ',') {
+            end = i
+            numbers.push(Number(arrFirst.slice(start, end)))
+            start = i + 1
+            count++
+        }
+        if(count === 3) {
+            numbers.push(Number(arrFirst.slice(start)))
+            break
+        }
+    }
+    allBackground.style.background = `linear-gradient(rgba(${numbers[0]}, ${numbers[1]}, ${numbers[2]}, ${numbers[3]}), rgba(${Math.floor(numbers[0] * 0.4)}, ${Math.floor(numbers[1] * 0.4)}, ${Math.floor(numbers[2] * 0.4)}, ${numbers[3]}))`
 }

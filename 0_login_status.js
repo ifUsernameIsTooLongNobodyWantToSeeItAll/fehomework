@@ -59,36 +59,41 @@ let userInformation = {
 let isLoggedIn = false;
 const head = document.getElementById("head_4")
 const username = document.getElementById("username_4")
+let refreshValue = {
+    code: null
+}
 
 main()
 
 function main() {
     fetches()
-    setTimeout(() => {
-        getLoginHead()
-    }, 500)
+    // setTimeout(() => {
+    //     console.log("fuck")
+    // }, 500)
 }
 
 function fetches() {
-    fetch(`http://localhost:3000/user/account?t=${new Date().getTime()}`)
-        .then((response) => {
-            response.json().then(json => userInformation = json)
-            console.log(`account status = ${response.status}`)
-        }, () => {
-            alert("No!")
-        }).then((resolve, reject) => {
-        if (userInformation.account === null) {
-            reject("null")
-        } else {
-            resolve(userInformation.account)
-        }
-    }).then(() => {
-        fetch(`http://localhost:3000/login/refresh?t=${new Date().getTime()}`).then((r) => {
-            console.log(`login refresh status = ${r.status}`)
+    fetch(`http://localhost:3000/login/refresh?timestamp=${new Date().getTime()}&noCookie=true`)
+        .then(r => r.json())
+        .then(r => refreshValue = r)
+        .then(() => {
+            if(refreshValue.code === 301) {
+                console.log("not login")
+            } else if(refreshValue.code === 200) {
+                console.log("Logged in")
+            } else {
+                console.log(refreshValue.code)
+            }
         })
-    }, () => {
-        console.log("Not logged in")
-    })
+        .then(() => {
+            fetch(`http://localhost:3000/user/account?timestamp=${new Date().getTime()}`)
+                .then(r => r.json())
+                .then(r => userInformation = r)
+                .then(() => {
+                    getLoginHead()
+                    getAccountInformation()
+                })
+        })
 }
 
 function getLoginHead() {
@@ -101,5 +106,15 @@ function getLoginHead() {
             head.setAttribute("src", userInformation.profile.avatarUrl)
             username.innerText = userInformation.profile.nickname.toString()
         }
+    }
+}
+
+function getAccountInformation() {
+    if (userInformation.account.id !== null) {
+        // setTimeout(() => {
+        fetch(`http://localhost:3000/user/playlist?uid=${userInformation.account.id}`)
+            .then((r) => r.json)
+            .then((json) => geDanListByUser = json)
+        // }, 200)
     }
 }

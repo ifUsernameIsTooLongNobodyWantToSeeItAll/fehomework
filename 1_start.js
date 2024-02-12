@@ -81,37 +81,36 @@ main()
 
 // function
 function main() {
-    fetches()
-    setTimeout(() => {
-        getGeDanRecommendations()
-        getUserGeDanList()
-        getSliderPictures()
-        changeLink()
-        directToGeDan()
-    }, 500) // in main
-}
-
-function fetches() {
     fetch("http://localhost:3000/banner")
         .then((response) => {
             response.json().then(r => sliderPicture = r)
             console.log(response.status)
+        }).then(() => {
+        fetch("http://localhost:3000/personalized?limit=10").then(r => {
+            r.json().then(json => informationOfGeDan = json)
+            console.log(r.status)
         })
-
-    fetch("http://localhost:3000/personalized?limit=10").then(r => {
-        r.json().then(json => informationOfGeDan = json)
-        console.log(r.status)
     })
 
-
-    if (userInformation.account.id !== null) {
-        setTimeout(() => {
-            fetch(`http://localhost:3000/user/playlist?uid=${userInformation.account.id}`).then((r) => r.json)
-                .then((json) => geDanListByUser = json)
-        }, 200)
-    }
-
+    fetch("http://localhost:3000/banner")
+        .then(r => r.json())
+        .then(r => sliderPicture = r)
+        .then(() => {
+            fetch("http://localhost:3000/personalized?limit=10")
+                .then(r => r.json())
+                .then(json => informationOfGeDan = json)
+                .then(() => {
+                    getGeDanRecommendations()
+                    getUserGeDanList()
+                    getSliderPictures()
+                    changeLink()
+                    directToGeDan()
+                })
+        })
+    // in main
 }
+
+
 
 function getSliderPictures() {
     if (arrayOfSliderPicturesInHtml.length < sliderPicture.banners.length) {

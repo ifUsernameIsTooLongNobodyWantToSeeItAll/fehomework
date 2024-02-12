@@ -44,6 +44,7 @@ function main() {
             addElements()
             setRed()
             getHot()
+            setClick()
         })
         if (otherElementIn0 !== null) {
             otherElementIn0.addEventListener("click", function () {
@@ -144,4 +145,13 @@ function pressEnterToSearch() {
             window.open(encodeURI("./6_search.html?" + "keyWord=" + inputBox.value))
         }
     })
+}
+
+function setClick() {
+    itemsInList = document.getElementsByClassName("hot_4")
+    for (let i = 0; i < itemsInList.length; i++) {
+        itemsInList[i].addEventListener("click", () => {
+            window.open(encodeURI("./6_search.html?" + "keyWord=" + nameHot[i].textContent))
+        })
+    }
 }

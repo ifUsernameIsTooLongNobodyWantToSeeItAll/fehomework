@@ -64,6 +64,7 @@ main()
 // function
 function main() {
     decode()
+    refreshStatus()
     keyWord = decode()
     fetches()
 }
@@ -83,6 +84,7 @@ function fetches() {
         // console.log("3: " + searchValueSingle.result.songs.length)
         // console.log("3: " + tableOneRow.length)
         getSearchedInformationForSingle()
+        clickAndPlay()
     })
 
     fetch(`http://localhost:3000/cloudsearch?keywords=${keyWord}&limit=100&type=1000`)
@@ -160,4 +162,15 @@ function getTime(i) {
     if (s < 10)
         return `${m}:0${s}`
     return `${m}:${s}`
+}
+
+function clickAndPlay() {
+    for (let i = 0; i < tableOneRow.length; i++) {
+        tableOneRow[i].ondblclick = () => {
+            console.log("2")
+            window.songId = searchValueSingle.result.songs[i].id
+            // playAll(searchValueSingle.result.songs[i].id)
+            refreshStatus()
+        }
+    }
 }

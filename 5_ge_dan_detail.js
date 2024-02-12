@@ -129,6 +129,7 @@ main()
 
 //function
 function main() {
+    refreshStatus()
     getID = decode()
     setTimeout(() => {
         fetches()
@@ -253,8 +254,9 @@ function directToSongs() {
             // window.open(encodeURI("./5_ge_dan_detail.html?" + "listId=" + informationOfGeDan.result[i].id))
             // window.open(encodeURI("./try_1.html?songId=" + geDanSongsInformation.songs[i].id))
             window.songId = geDanSongsInformation.songs[i].id
-            alert("You clicked it!!!")
+            // alert("You clicked it!!!")
             playAll(window.songId)
+            // refreshStatus()
         }
     }
 }

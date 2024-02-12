@@ -22,56 +22,52 @@ main()
 
 // function
 function main() {
-    loginButton.onclick = function () {
-        // const telephoneNumber = telephoneObject.value
-        console.log(`telephone number = ${telephoneObject.value}`)
-        setTimeout(() => {
+    document.addEventListener("DOMContentLoaded", () => {
+        loginButton.onclick = function () {
+            // const telephoneNumber = telephoneObject.value
+            console.log(`telephone number = ${telephoneObject.value}`)
             isLegalNumber = isLegal(telephoneObject.value)
             if (isLegalNumber !== false) {
-                fetches()
-                setTimeout(() => {
-                    if (!isRightPassword()) {
-                        alert("账号或密码错误！")
-                    } else {
-                        // window.location.url = "1_start.html"
-                        // window.navigate("1_start.html").then(r => console.log(r.status));//
-                        window.location.replace("1_start.html")
-                    }
-                }, 101)
+                fetch(`http://localhost:3000/login/cellphone?phone=${telephoneObject.value}&password=${passwordObject.value}&timestamp=${new Date().getTime()}`)
+                    .then(r => r.json())
+                    .then(r => correctPassword = r)
+                    .then(() => {
+                        if (!isRightPassword()) {
+                            alert("账号或密码错误！")
+                        } else {
+                            // window.location.url = "1_start.html"
+                            // window.navigate("1_start.html").then(r => console.log(r.status));//
+                            window.location.replace("1_start.html")
+                        }
+                    })
             }
-        }, 100)
-    }
-}
-
-function fetches() {
-    fetch(`http://localhost:3000/login/cellphone?phone=${telephoneObject.value}&password=${passwordObject.value}&t=${new Date().getTime()}`)
-        .then(r => {
-            r.json().then(r => correctPassword = r)
-            console.log(r.status)
-        })
+        }
+    })
 }
 
 function isLegal(tel) {
-    if (!(1 < (Number(tel) / 10000000000) && (Number(tel) / 10000000000) < 2)) {
+    // if (!(1 < (Number(tel) / 10000000000) && (Number(tel) / 10000000000) < 2)) {
+    if(Math.floor(Number(tel) / 10000000000) !== 1) {
         alert("请输入正确的手机号")
         return false
     }
-    fetch(`http://localhost:3000/cellphone/existence/check?phone=${tel}&t=${new Date().getTime()}`, {
+    fetch(`http://localhost:3000/cellphone/existence/check?phone=${tel}&timestamp=${new Date().getTime()}`, {
         method: "POST"
-    }).then(r => {
-        r.json().then(r => signedIn = r)
-        console.log(r.status);
-    })
-    setTimeout(() => {
-        if (signedIn.exist === -1) {
-            alert("手机号未注册")
-            return false
-        }
-        return true
-    }, 100)
+    }).then(r => r.json())
+        .then(r => signedIn = r)
+        .then(() => {
+            if (signedIn.exist === -1) {
+                alert("手机号未注册")
+                return false
+            }
+            return true
+        })
+    return true
+
 }
 
 function isRightPassword() {
     console.log(`correctPassword.code = ${correctPassword.code}`)
     return correctPassword.code === 200;
 }
+

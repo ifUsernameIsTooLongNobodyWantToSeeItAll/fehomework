@@ -27,49 +27,39 @@ main()
 // 函数定义
 function main() {
     fetches()
-    setTimeout(() => {
-        key = getKey.data.unikey
-        qrcode.setAttribute("src", getImg.data.qrimg)
-        login()
-    }, 1000)
 }
 
 function fetches() {
-    // fetch("http://localhost:3000/login/qr/key" + '?t=' + Date.now()).then(r => {
-    //     r.json().then((json) => getKey = json)
-    //     console.log(`getKey status = ${r.status}`)
-    //     fetch(`http://localhost:3000/login/qr/create?qrimg=true&key=${key}?t=${new Date().getTime()}`).then(r => {
-    //         r.json().then(r => getImg = r)
-    //         console.log(`make qrcode status = ${r.status}`)
-    //     })
-    // })
-
-    fetch("http://localhost:3000/login/qr/key" + '?t=' + Date.now())
+    fetch("http://localhost:3000/login/qr/key" + '?timestamp=' + new Date().getTime())
         .then(r => r.json())
-        .then(() => fetch(`http://localhost:3000/login/qr/create?qrimg=true&key=${key}?t=${new Date().getTime()}`).then(r => r.json()).then(r => getImg = r))
+        .then(r => getKey = r)
+        .then(() => key = getKey.data.unikey)
+        .then(() => {
+            fetch(`http://localhost:3000/login/qr/create?qrimg=true&key=${key}?timestamp=${new Date().getTime()}`)
+                .then(r => r.json())
+                .then(r => getImg = r)
+                .then(() => qrcode.setAttribute("src", getImg.data.qrimg))
+                .then(() => login())
+        })
 }
 
 function login() {
     let check = setInterval(() => {
-        let nowNext = new Date().getTime();
-        fetch(`http://localhost:3000/login/qr/check?key=${key}&t=${nowNext}&noCookie=true`).then(r => {
-            r.json().then((json) => QRCode = json)
-            console.log(r.status)
-        })
-        setTimeout(() => {
-            console.log(QRCode.message, '---')
-            if (QRCode.code === 800) {
-                alert("QRCode.message")
-                clearInterval(check)
-            }
-            if (QRCode.code === 803) {
-                alert("QRCode.message")
-                clearInterval(check)
-            }
-        }, 1000)
+        fetch(`http://localhost:3000/login/qr/check?key=${key}&timestamp=${new Date().getTime()}`)
+            .then(r => r.json())
+            .then(r => QRCode = r)
+            .then(() => {
+                console.log(QRCode.message)
+                if (QRCode.code === 800) {
+                    alert(QRCode.message)
+                    clearInterval(check)
+                }
+                if (QRCode.code === 803) {
+                    alert(QRCode.message)
+                    clearInterval(check)
+                }
+            })
 
     }, 3000)
     console.log(QRCode.message)
 }
-
-

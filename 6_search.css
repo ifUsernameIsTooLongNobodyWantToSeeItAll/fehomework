@@ -1,6 +1,6 @@
 #under_1 {
     width: 100%;
-    height: 85%;
+    height: calc(85% - 80px);
     overflow: hidden;
     /*float: left;*/
 }
@@ -94,7 +94,7 @@
     font-size: 13px;
     top: 10px;
     height: 16px;
-    background-color: rgb(247, 249, 252);
+    /*background-color: rgb(247, 249, 252);*/
 }
 
 #buttons_4 {
@@ -157,7 +157,7 @@
     left: 21px;
 }
 
-#title_6 {
+#title_in_6_6 {
     left: 46px;
 }
 
@@ -221,6 +221,10 @@
     width: 567px;
     font-size: 16px;
     /*background-color: green;*/
+    white-space: nowrap;
+    max-width: 567px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .singer_8 {
@@ -229,6 +233,10 @@
     height: 16px;
     font-size: 12px;
     color: gray;
+    white-space: nowrap;
+    max-width: 567px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     /*background-color: lightcoral;*/
 }
 
