@@ -27,6 +27,10 @@ const nowThisPlace = document.getElementById("now_7")
 let stopButton = document.getElementById("stop_continue_button_6")
 const pictureButton = document.getElementById("continue_or_stop_7")
 let level = 'exhigh'
+// let tempId
+// export let songId = 0
+// songId = 0
+let songId = decode()
 function playAll(songId) {
     // document.addEventListener("DOMContentLoaded", function () {
     console.log(54)
@@ -63,6 +67,7 @@ function playAll(songId) {
                     audioOfSong.setAttribute("src", songAudioInformation.data[0].url)
                     // debugs(75)
                 }).then(() => {
+                clickToJump()
                 audioOfSong.play()
                 setPlaying()
                 // document.addEventListener("DOMContentLoaded", function() {
@@ -86,7 +91,7 @@ function playAll(songId) {
 function setPlaying() {
     time = setInterval(function () {
         let audioTime = audioOfSong.duration
-        pictureButton.style.background = `url("./img/stop.svg")`
+        // pictureButton.style.background = `url("./img/stop.svg")`
         let m = Math.floor(audioTime / 60)
         let s = Math.floor(audioTime % 60)
         m = (m < 10) ? `0${m}` : `${m}`
@@ -141,16 +146,27 @@ function setPlaying() {
         isPressedDown = false
     }
 }
-function click() {
+
+function clickToJump() {
     albumPictureIn03.onclick = function () {
-        window.open(encodeURI("./7_play_detail.html"))
+        window.open(encodeURI(`./7_play_detail.html?songId=${songId}`))
+        // songId =
+        // window.location.replace(`./7_play_detail.html?songId=${songId}`)
     }
 }
 
 function refreshStatus() {
-    if(typeof songId == "undefined" || songId === null) {
+    if (typeof songId == "undefined" || songId === null) {
         console.log("No music played")
     } else {
         playAll(songId)
+        console.log(`songId = ${songId}`)
+
     }
+}
+
+function decode() {
+    let id = decodeURI(document.URL)
+    id = id.slice(id.indexOf('=') + 1)
+    return Number(id)
 }

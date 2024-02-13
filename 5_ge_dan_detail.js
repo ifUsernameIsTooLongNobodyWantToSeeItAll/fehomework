@@ -253,9 +253,9 @@ function directToSongs() {
         songCountInList[i].onclick = function () {
             // window.open(encodeURI("./5_ge_dan_detail.html?" + "listId=" + informationOfGeDan.result[i].id))
             // window.open(encodeURI("./try_1.html?songId=" + geDanSongsInformation.songs[i].id))
-            window.songId = geDanSongsInformation.songs[i].id
+            songId = geDanSongsInformation.songs[i].id
             // alert("You clicked it!!!")
-            playAll(window.songId)
+            playAll(songId)
             // refreshStatus()
         }
     }

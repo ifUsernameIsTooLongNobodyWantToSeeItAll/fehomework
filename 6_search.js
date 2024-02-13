@@ -168,8 +168,10 @@ function clickAndPlay() {
     for (let i = 0; i < tableOneRow.length; i++) {
         tableOneRow[i].ondblclick = () => {
             console.log("2")
-            window.songId = searchValueSingle.result.songs[i].id
+            songId = searchValueSingle.result.songs[i].id
             // playAll(searchValueSingle.result.songs[i].id)
+            console.log(`searchValueSingle.result.songs[i].id = ${searchValueSingle.result.songs[i].id}`)
+            console.log(`songId = ${songId}`)
             refreshStatus()
         }
     }

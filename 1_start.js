@@ -2,6 +2,7 @@
 // var
 // import {userInformation} from "./0_login_status";
 window.page = 1
+// import {songId} from "./0_3_play_music";
 let arrayOfSliderPicturesInHtml = document.getElementsByClassName("pictures_6")
 const geDanRecommendations = document.getElementsByClassName("pic_7")
 const geDanDescription = document.getElementsByClassName("description_7")
