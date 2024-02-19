@@ -1,8 +1,8 @@
 // cd E:\fehomework\NeteaseCloudMusicApi-master\NeteaseCloudMusicApi-4.14.1
 // var
-// import {userInformation} from "./0_login_status";
+// import {userInformation} from "./0_login_status"
 window.page = 1
-// import {songId} from "./0_3_play_music";
+// import {songId} from "./0_3_play_music"
 let arrayOfSliderPicturesInHtml = document.getElementsByClassName("pictures_6")
 const geDanRecommendations = document.getElementsByClassName("pic_7")
 const geDanDescription = document.getElementsByClassName("description_7")
@@ -15,52 +15,18 @@ let sliderPicture = {
     banners: [
         {
             imageUrl: null,
-            targetId: null,
-            adid: null,
-            targetType: null,
-            titleColor: null,
-            typeTitle: null,
-            url: null,
-            exclusive: null,
-            monitorImpress: null,
-            monitorClick: null,
-            monitorType: null,
-            monitorImpressList: null,
-            monitorClickList: null,
-            monitorBlackList: null,
-            extMonitor: null,
-            extMonitorInfo: null,
-            adSource: null,
-            adLocation: null,
-            adDispatchJson: null,
-            encodeId: null,
-            program: null,
-            event: null,
-            video: null,
-            song: null,
-            scm: null,
-            bannerBizType: null
         }
     ]
-};
+}
 
 let informationOfGeDan = {
-    hasTaste: null,
-    code: null,
-    category: null,
     result: [
         {
             id: null,
-            type: null,
             name: null,
-            copywriter: null,
             picUrl: null,
-            canDislike: null,
-            trackNumberUpdateTime: null,
             playCount: null,
             trackCount: null,
-            highQuality: null,
-            alg: null
         }
     ]
 }
@@ -119,7 +85,7 @@ function getSliderPictures() {
             let addElement = "<a href=\"#\" class=\"slider_5\">\n    <img src=\"#\" alt=\"" + i + "\" class=\"pictures_6\">\n</a>"
             // let ul = document.getElementsByClassName("slider_4")[0]
             // ul.innerHTML += addElement
-            // ul.insertAdjacentHTML("beforeend", addElement);
+            // ul.insertAdjacentHTML("beforeend", addElement)
             let add = document.createElement("li")
             add.innerHTML = addElement
             let slider_4 = document.getElementsByClassName("slider_4")[0]
@@ -135,90 +101,79 @@ function getSliderPictures() {
 
 
 function slide() {
-    // 控制播放张数
-    let point;
-    let key;
-    let i;
-    const slider = document.getElementById("slider_2");
-    const ul = slider.children[0].children[0];
-    const ullis = ul.children;
-
-// 1、动态复制最后一张图
-    ul.appendChild(ullis[0].cloneNode(true));
-
-// 2、动态生成小圆点
-    const ol = document.createElement("ol");
-    slider.appendChild(ol);
-    for (i = 0; i < ullis.length - 1; i++) {
-        const li = document.createElement("li");
-        li.innerHTML = (i + 1).toString();
-        ol.appendChild(li);
+    let point
+    let key
+    let i
+    const slider = document.getElementById("slider_2")
+    const ul = slider.children[0].children[0]
+    const liInUl = ul.children
+    
+    ul.appendChild(liInUl[0].cloneNode(true))
+    
+    const ol = document.createElement("ol")
+    slider.appendChild(ol)
+    for (i = 0; i < liInUl.length - 1; i++) {
+        const li = document.createElement("li")
+        li.innerHTML = (i + 1).toString()
+        ol.appendChild(li)
     }
-    ol.children[0].setAttribute("class", "current");
+    ol.children[0].setAttribute("class", "current")
+    
+    const liInOl = ol.children
+    for (i = 0; i < liInOl.length; i++) {
+        liInOl[i].index = i
 
-// 3、鼠标经过小圆点  圆点事件
-    const ollis = ol.children;
-    for (i = 0; i < ollis.length; i++) {
-        ollis[i].index = i; // 自定义属性
-
-        ollis[i].onmouseover = function () {
-            for (let j = 0; j < ollis.length; j++) { // 去掉所有小圆点的class
-                ollis[j].removeAttribute("class");
+        liInOl[i].onmouseover = function () {
+            for (let j = 0; j < liInOl.length; j++) {
+                liInOl[j].removeAttribute("class")
             }
-            ollis[this.index].setAttribute("class", "current"); // 保留当前小圆点的class
-            // ollis[i].setAttribute("borderRadius", "20px")
-            // 图片动画
-            animate(ul, -this.index * ullis[0].offsetWidth);
+            liInOl[this.index].setAttribute("class", "current")
+            animate(ul, -this.index * liInUl[0].offsetWidth)
 
-            key = point = this.index; // 从当前开始动画
+            key = point = this.index
         }
     }
-// 缓动动画函数
-    let leader = 0;//缓动动画变量
+    let leader = 0
     function animate(obj, target) {
-        clearInterval(obj.timer); // 清除定时器
-        /*定时任务，缓动轮播 30毫秒到target位置*/
+        clearInterval(obj.timer)
         obj.timer = setInterval(function () {
-            leader = leader + (target - leader) / 10;//缓动动画公式
-            obj.style.left = leader + "px";
-        }, 10);
+            leader = leader + (target - leader) / 10
+            obj.style.left = leader + "px"
+        }, 10)
     }
 
-// 4、轮播图定时器
-    let timer = null;
-    timer = setInterval(autoplay, 5000);
-    key = 0;
-    point = 0; // 控制小圆点
+
+    let timer = null
+    timer = setInterval(autoplay, 5000)
+    key = 0
+    point = 0
     function autoplay() {
         // 播放张数
-        key++;
-        if (key > ullis.length - 1) { // 判断是否播放完
-            leader = 0; // 迅速跳回
-            key = 1; // 下次播放第二张
+        key++
+        if (key > liInUl.length - 1) {
+            leader = 0
+            key = 1
         }
-        animate(ul, -key * ullis[0].offsetWidth);
+        animate(ul, -key * liInUl[0].offsetWidth)
 
         // 小圆点
-        point++;
-        if (point > ollis.length - 1) {
-            point = 0;
+        point++
+        if (point > liInOl.length - 1) {
+            point = 0
         }
-        for (let i = 0; i < ollis.length; i++) { // 先清除所有的
-            ollis[i].removeAttribute("class");
+        for (let i = 0; i < liInOl.length; i++) {
+            liInOl[i].removeAttribute("class")
         }
-        ollis[point].setAttribute("class", "current") // 再保留现在的
+        liInOl[point].setAttribute("class", "current")
     }
-
-// 5、鼠标经过事件
+    
     slider.onmouseover = function () {
-        clearInterval(timer);
+        clearInterval(timer)
     }
     slider.onmouseout = function () {
-        timer = setInterval(autoplay, 3000);
+        timer = setInterval(autoplay, 3000)
     }
 }
-
-/*获取歌单*/
 
 
 function getGeDanRecommendations() {

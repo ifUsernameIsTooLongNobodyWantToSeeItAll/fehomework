@@ -48,14 +48,14 @@ function playAll(songId) {
                             singerName.innerHTML += `/${songOtherInformation.songs[0].ar[i].name}`
                         }
                     }
-                    // debugs(102)
+
                     // return singerName.innerHTML
                     //
                     // singerName.innerHTML = getSingerName()
-                    // debugs(64)
+
                 })
             console.log(`song information status = ${r.status}`)
-            // debugs(67)
+
         })
 
     fetch(`http://localhost:3000/song/url/v1?id=${songId}&level=${level}&timestamp=${new Date().getTime()}`)
@@ -65,14 +65,14 @@ function playAll(songId) {
                 .then(() => {
                     audioOfSong = document.getElementById("music_to_play_4")
                     audioOfSong.setAttribute("src", songAudioInformation.data[0].url)
-                    // debugs(75)
+
                 }).then(() => {
                 clickToJump()
                 audioOfSong.play()
                 setPlaying()
                 // document.addEventListener("DOMContentLoaded", function() {
                 // console.log(totalTime.innerHTML)
-                // debugs(124)
+
                 stopButton.addEventListener("click", function () {
                     if (!audioOfSong.paused) {
                         audioOfSong.pause()
