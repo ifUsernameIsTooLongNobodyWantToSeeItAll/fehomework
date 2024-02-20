@@ -182,21 +182,21 @@
 }
 
 #last_7 {
-    background: url("./img/previous.svg");
+    background: url("../img/previous.svg");
 }
 
 #continue_or_stop_7 {
-    background: url("./img/continue.svg");
+    background: url("../img/continue.svg");
 }
 
 #next_7 {
-    background: url("./img/next.svg");
+    background: url("../img/next.svg");
 }
 
 #discussion_6 {
-    background: url("./img/comment.svg");
+    background: url("../img/comment.svg");
 }
 
 #download_6 {
-    background: url("./img/download.svg");
+    background: url("../img/download.svg");
 }

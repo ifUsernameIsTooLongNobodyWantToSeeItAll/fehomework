@@ -17,7 +17,7 @@ html, body {
 }
 
 #top_place_3 {
-    background: url(img/topbar.png) no-repeat;
+    background: url(../img/topbar.png) no-repeat;
     position: relative;
     display: flex;
     color: white;
@@ -45,7 +45,7 @@ html, body {
 
 #button_3 {
     height: 30px;
-    background: url("img/search.svg");
+    background: url("../img/search.svg");
     border: 0 solid;
     top: 5px;
     position: relative;

@@ -2,22 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>歌单</title>
-    <link rel="stylesheet" href="5_ge_dan_detail.css">
-    <link rel="stylesheet" href="./0_start_every_have.css">
-    <link rel="stylesheet" href="0_3_play_music.css">
+    <link href="../css/0_start_every_have.css" rel="stylesheet">
+    <link href="../css/6_search.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/0_3_play_music.css">
+    <title>搜索</title>
 </head>
 <body>
-
 <div id="top_side_first">
     <span id="logo_second">
-        <a href="./1_start.html" id="top_place_3" title="网易云音乐">
+        <a href="1_start.html" id="top_place_3" title="网易云音乐">
             <span id="small_4"></span>
         </a>
     </span>
     <span id="search_box_2">
         <button id="button_3">
-            <img alt="search" id="search_icon_3" src="img/search.svg">
+            <img alt="search" id="search_icon_3" src="../img/search.svg">
         </button>
         <label>
             <input id="input_3" placeholder="搜索歌曲" type="text">
@@ -25,7 +24,7 @@
     </span>
     <span id="head_and_name_2">
         <button id="button_for_head_and_name_3">
-            <img alt="head" id="head_4" src="img/not_login.png">
+            <img alt="head" id="head_4" src="../img/not_login.png">
             <a href="2_sign_in.html" id="username_4">未登录</a>
         </button>
     </span>
@@ -34,47 +33,53 @@
     <div id="left_side_2">
         <div class="ge_dan_in_left_2">
             <a class="not_clicked_or_not_in_3 favourite_3" href="#">
-                <img alt="like" id="My_favorite_icon_4" src="img/MyFavorite.svg">
+                <img alt="like" id="My_favorite_icon_4" src="../img/MyFavorite.svg">
                 我喜欢的音乐
             </a>
         </div>
     </div>
     <div id="right_side_2">
         <div id="all_information_3">
-            <div id="list_basic_information_4">
-                <div id="pictures_5"></div>
-                <div id="right_4__5">
-                    <div id="detail_5">
-                        <div id="list_name_6"></div>
-                        <div id="description_6"></div>
-                        <div id="creator_6">
-                            <img src="img/default_head.png" id="head_7" alt=" ">
-                            <span id="creator_name_7"></span>
-                            <span id="create_time_7"></span>
-                        </div>
-                    </div>
-                    <div id="play_button_5">
-
+            <div id="absolute">
+                <div id="top_information_4">
+                    <div id="for_words_5">
+                        <div id="search_key_word_6"></div>
+                        <div class="other_word_6" id="other_word_6">&emsp;的相关搜索如下，共找到</div>
+                        <div class="other_word_6" id="number_searched_6">0</div>
+                        <div class="other_word_6" id="other_word_2_6">首单曲</div>
                     </div>
                 </div>
-            </div>
-            <div id="buttons_3">
                 <div id="buttons_4">
-                    <div class="buttons_5">
-                        <div id="songs_button_6" class="button_in_5_6 checked">
-                            <div id="songs_7">歌曲&nbsp;</div>
-                            <div id="song_number_7" class="number_7">0</div>
-                        </div>
+                    <div id="left_button_5">
+                        <div class="buttons_6 clicked">单曲</div>
+                        <div class="buttons_6"></div>
                     </div>
-                    <div class="buttons_5">
-                        <div class="button_in_5_6" id="comments_6">
-                            <div id="comments_7">评论&nbsp;</div>
-                            <div id="comment_number_7" class="number_7">0</div>
+                    <!--                <div id="right_button_5"></div>-->
+                </div>
+            </div>
+            <div id="relative">
+                <div id="table_first_rank_4">
+                    <div id="table_first_line_5">
+                        <div class="tfl_6" id="jing_6">#</div>
+                        <div class="tfl_6" id="title_in_6_6">标题</div>
+                        <div class="tfl_6" id="album_6">专辑</div>
+                        <div class="tfl_6" id="time_6">时长</div>
+                    </div>
+                </div>
+                <div id="table_4">
+                    <div id="table_5">
+                        <div class="table_one_row_6">
+                            <div class="number_in_search_result_7"></div>
+                            <div class="album_picture_7"></div>
+                            <div class="song_and_singer_7">
+                                <div class="song_8"></div>
+                                <div class="singer_8"></div>
+                            </div>
+                            <div class="album_name_7"></div>
+                            <div class="time_7"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="song_list_4" class="song_list_4">
             </div>
         </div>
     </div>
@@ -125,12 +130,9 @@
         <!--        </div>-->
     </div>
 </div>
-
-<script src="0_login_status.js"></script>
-<script src="0_2_search.js"></script>
-<script src="0_3_play_music.js"></script>
-<script src="5_ge_dan_detail.js"></script>
-
-
+<script src="../js/0_login_status.js"></script>
+<script src="../js/0_3_play_music.js"></script>
+<script src="../js/6_search.js"></script>
+<script src="../js/0_2_search.js"></script>
 </body>
 </html>
