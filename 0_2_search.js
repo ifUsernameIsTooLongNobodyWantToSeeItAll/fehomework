@@ -1,19 +1,8 @@
 // var
 let hotList = {
-    code: null,
-    data: [
-        {
-            searchWord: null,
-            score: null,
-            content: null,
-            source: null,
-            iconType: null,
-            iconUrl: null,
-            url: null,
-            alg: null
-        }
-    ],
-    message: null
+    code: null, data: [{
+        searchWord: null, score: null, content: null, source: null, iconType: null, iconUrl: null, url: null, alg: null
+    }], message: null
 }
 let keepHot = undefined
 let listAddPls = undefined
@@ -74,12 +63,13 @@ function showIt() {
     addElement.innerHTML = add
     addElement.setAttribute("id", "new_item_2")
     console.log(window.page)
-    if (window.page === 1)
+    if (window.page === 1) {
         elementAddPlsIn0.appendChild(addElement)
-    else if (window.page === 2 || window.page === 3)
+    } else if (window.page === 2 || window.page === 3) {
         elementAddPlsIn23.appendChild(addElement)
-    else
+    } else {
         elementAddPlsIn45AndSoOn.appendChild(addElement)
+    }
 }
 
 function getHot() {
