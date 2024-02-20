@@ -9,44 +9,15 @@ let geDanDetailInformation = {
         name: null,
         coverImgId: null,
         coverImgUrl: null,
-        coverImgId_str: null,
         userId: null,
         createTime: null,
         trackCount: null,
-        specialType: null,
-        privacy: null,
-        trackUpdateTime: null,
         playCount: null,
-        trackNumberUpdateTime: null,
-        subscribedCount: null,
-        cloudTrackCount: null,
         description: null,
-        relateResType: null,
         creator: {
-            defaultAvatar: null,
-            province: null,
-            authStatus: null,
-            followed: null,
             avatarUrl: null,
-            accountStatus: null,
-            gender: null,
-            city: null,
-            userId: null,
-            userType: null,
             nickname: null,
-            avatarImgId: null,
-            backgroundImgId: null,
-            backgroundUrl: null,
-            authority: null,
-            mutual: null,
-            expertTags: null,
-            djStatus: null,
-            vipType: null,
-            remarkName: null,
-            authenticationTypes: null
         },
-        videoIds: null,
-        videos: null,
         trackIds: [
             {
                 id: null,
@@ -56,14 +27,6 @@ let geDanDetailInformation = {
                 uid: null
             }
         ],
-        bannedTrackIds: null,
-        mvResourceInfos: null,
-        shareCount: null,
-        commentCount: null,
-        remixVideo: null,
-        sharedUsers: null,
-        historySharedUsers: null,
-        gradeStatus: null,
         score: null,
         algTags: null,
         trialMode: null
@@ -75,7 +38,6 @@ let geDanSongsInformation = {
         {
             name: null,  // 歌曲名
             id: null,  // 歌曲id
-            pst: null,
             t: null,
             ar: [
                 {
@@ -86,13 +48,6 @@ let geDanSongsInformation = {
                 }
             ],
             alia: null,  // bie ming
-            pop: null,
-            st: null,
-            rt: null,
-            fee: null,
-            v: null,
-            crbt: null,
-            cf: null,
             al: {
                 id: null,  // album id
                 name: null,  // album name
@@ -172,7 +127,7 @@ function getGeDanUpInformation() {
 function formatDate(dateNumber) {
     let dateString = ''
     let date = new Date(dateNumber)
-    dateString += `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}创建`
+    dateString += `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()} 创建`
     return dateString
 }
 

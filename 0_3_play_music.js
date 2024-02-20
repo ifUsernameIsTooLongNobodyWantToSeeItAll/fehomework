@@ -49,10 +49,6 @@ function playAll(songId) {
                         }
                     }
 
-                    // return singerName.innerHTML
-                    //
-                    // singerName.innerHTML = getSingerName()
-
                 })
             console.log(`song information status = ${r.status}`)
 
@@ -70,9 +66,6 @@ function playAll(songId) {
                 clickToJump()
                 audioOfSong.play()
                 setPlaying()
-                // document.addEventListener("DOMContentLoaded", function() {
-                // console.log(totalTime.innerHTML)
-
                 stopButton.addEventListener("click", function () {
                     if (!audioOfSong.paused) {
                         audioOfSong.pause()
@@ -134,7 +127,6 @@ function setPlaying() {
             nowThisPlace.style.left = result + 'px'
             // leftPart.style.width = result + 'px'
             // rightPart.style.width = (468 - result) + 'px'
-            // add code
         }
     }
 
@@ -150,8 +142,6 @@ function setPlaying() {
 function clickToJump() {
     albumPictureIn03.onclick = function () {
         window.open(encodeURI(`./7_play_detail.html?songId=${songId}`))
-        // songId =
-        // window.location.replace(`./7_play_detail.html?songId=${songId}`)
     }
 }
 

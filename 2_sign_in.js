@@ -21,7 +21,6 @@ let QRCode = {
     cookie: null
 }
 const qrcode = document.getElementById("QR_code_3")
-// let codes;
 main()
 
 // 函数定义

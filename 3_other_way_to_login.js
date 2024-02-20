@@ -2,7 +2,6 @@
 window.page = 3
 const telephoneObject = document.getElementById("phone_number_7")
 const passwordObject = document.getElementById("password_input_7")
-// const password = passwordObject.value
 const loginButton = document.getElementById("button_to_click_4")
 let signedIn = {
     exist: null,
@@ -36,7 +35,6 @@ function main() {
                             alert("账号或密码错误！")
                         } else {
                             // window.location.url = "1_start.html"
-                            // window.navigate("1_start.html").then(r => console.log(r.status));//
                             window.location.replace("1_start.html")
                         }
                     })

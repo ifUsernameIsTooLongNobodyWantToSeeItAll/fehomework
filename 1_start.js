@@ -101,6 +101,7 @@ function getSliderPictures() {
 
 
 function slide() {
+    //      轮播图html js代码参考这篇文章 https://blog.csdn.net/Victoriasxy/article/details/113575662
     let point
     let key
     let i
@@ -148,7 +149,6 @@ function slide() {
     key = 0
     point = 0
     function autoplay() {
-        // 播放张数
         key++
         if (key > liInUl.length - 1) {
             leader = 0
@@ -156,7 +156,6 @@ function slide() {
         }
         animate(ul, -key * liInUl[0].offsetWidth)
 
-        // 小圆点
         point++
         if (point > liInOl.length - 1) {
             point = 0

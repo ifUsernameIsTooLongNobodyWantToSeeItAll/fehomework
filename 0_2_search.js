@@ -116,7 +116,7 @@ function removeElement() {
     let llmDelete = document.getElementsByClassName("name_5")
     let littleDelete = document.getElementsByClassName("hot_4")
     let deleteElement = document.getElementById("new_item_2")
-    // setTimeout(() => {
+
     if (deleteElement != null) {
         for (const littleDeleteElement of littleDelete) {
             littleDeleteElement.remove()

@@ -213,7 +213,6 @@ function convertTimeToNumber(lyricsTime) {
     }
 }
 
-// console.log(convertTimeToNumber("03:10.30"))
 function changeTime(lyricsArray) {
     for (const lyricsArrayElement of lyricsArray) {
         lyricsArrayElement.time = convertTimeToNumber(lyricsArrayElement.time)
@@ -228,7 +227,6 @@ function gatherInformationToLyrics() {
     }
     for (let i = 0; i < informationObject.data.length * 2; i += 2) {
         newStringObject.time = informationObject.data[i / 2].t
-        // newStringObject.lyrics = informationObject.data[i / 2].c.
         for (let j = 0; j < informationObject.data[i / 2].c.length; j++) {
             newStringObject.lyrics += informationObject.data[i / 2].c[j].tx
         }
@@ -272,7 +270,7 @@ function setClick() {
 }
 //
 // function getBackgroundColors() {
-//     // Adapted from https://kuangyx.cn/docs/%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E6%8F%90%E5%8F%96%E5%9B%BE%E7%89%87%E4%B8%BB%E9%A2%98%E8%89%B2.html#%E4%B8%80%E3%80%81%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E7%BB%98%E5%88%B6%E5%9C%A8-canvas-%E4%B8%8A
+//     // 参考文章: https://kuangyx.cn/docs/%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E6%8F%90%E5%8F%96%E5%9B%BE%E7%89%87%E4%B8%BB%E9%A2%98%E8%89%B2.html#%E4%B8%80%E3%80%81%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E7%BB%98%E5%88%B6%E5%9C%A8-canvas-%E4%B8%8A
 //     const pictureWidth = albumPictureInPlayPage.width
 //     const pictureHeight = albumPictureInPlayPage.height
 //     const canvas = document.createElement('canvas')
