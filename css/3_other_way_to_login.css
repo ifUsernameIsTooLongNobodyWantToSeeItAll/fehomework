@@ -1,11 +1,11 @@
 #under_1 {
-    height: calc(100vh - 80px);
+    height: 100%;
     width: 100vw;
 }
 
 #login_window_2 {
-    width: 525px;
-    height: 770px;
+    width: 463px;
+    height: 100%;
     /*background-color: pink;*/
     top: 0;
     bottom: 0;
@@ -33,7 +33,7 @@
     width: 80px;
     height: 80px;
     position: absolute;
-    left: calc((100vw - 525px) / 2 + 8px);
+    left: calc((100vw - 525px) / 2 + 37px);
 }
 
 #up_left_triangle_4 {
@@ -44,7 +44,7 @@
 
 #text_scan_is_safe_3 {
     position: relative;
-    left: 100px;
+    left: 98px;
     top: 20px;
     width: 160px;
     height: 40px;
