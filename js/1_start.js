@@ -143,7 +143,6 @@ function slide() {
         }, 10)
     }
 
-
     let timer = null
     timer = setInterval(autoplay, 5000)
     key = 0

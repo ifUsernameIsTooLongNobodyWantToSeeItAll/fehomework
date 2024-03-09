@@ -136,7 +136,7 @@ html, body {
     top: 40px;
     width: 100%;
     /*background-color: lightpink;*/
-    overflow: scroll;
+    overflow: auto;
 }
 ul {
     transition: 0.5s;

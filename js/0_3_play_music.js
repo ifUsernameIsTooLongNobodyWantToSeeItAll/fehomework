@@ -31,6 +31,7 @@ let level = 'exhigh'
 // export let songId = 0
 // songId = 0
 let songId = decode()
+
 function playAll(songId) {
     // document.addEventListener("DOMContentLoaded", function () {
     console.log(54)
@@ -69,7 +70,7 @@ function playAll(songId) {
                 stopButton.addEventListener("click", function () {
                     if (!audioOfSong.paused) {
                         audioOfSong.pause()
-                        pictureButton.style.cssText = `background: url("./img/continue.svg")`
+                        pictureButton.style.cssText = `background: url("../img/continue.svg")`
                         clearInterval(time)
                     } else {
                         audioOfSong.play()
@@ -101,42 +102,8 @@ function setPlaying() {
         rightPart.style.width = (1 - (audioOfSong.currentTime / audioTime)) * 100 + '%'
     }, 1000)
 
-    pictureButton.style.cssText = `background: url("./img/stop.svg")`
-    let isOnIt = false
-    let isPressedDown = false
-    let startPositionX
-    let barPositionX
-    let result
-    progressBar.onmousedown = function (event) {
-        isOnIt = true
-        isPressedDown = true
-        startPositionX = event.clientX
-        barPositionX = progressBar.offsetLeft
-    }
-
-    document.body.onmousemove = function (event) {
-        if (isOnIt) {
-            let positionX = event.clientX
-            result = barPositionX + positionX - startPositionX
-            if (result > progressBar.offsetWidth - nowThisPlace.offsetWidth) {
-                result = progressBar.offsetWidth - nowThisPlace.offsetWidth
-            }
-            if (result < 0) {
-                result = 0
-            }
-            nowThisPlace.style.left = result + 'px'
-            // leftPart.style.width = result + 'px'
-            // rightPart.style.width = (468 - result) + 'px'
-        }
-    }
-
-    document.body.onmouseup = function () {
-        isOnIt = false
-        if (isPressedDown) {
-            audioOfSong.currentTime = Math.floor((result / progressBar.offsetWidth) * audioOfSong.duration)
-        }
-        isPressedDown = false
-    }
+    pictureButton.style.cssText = `background: url("../img/stop.svg")`
+    progressBarSetClick()
 }
 
 function clickToJump() {
@@ -160,3 +127,15 @@ function decode() {
     id = id.slice(id.indexOf('=') + 1)
     return Number(id)
 }
+
+function progressBarSetClick() {
+    let leftOfProgressBar = progressBar.getBoundingClientRect().left
+    let widthOfProgressBar = progressBar.clientWidth
+    progressBar.addEventListener("click", function (event) {
+        let click = event || window.event
+        console.log(click.clientX - leftOfProgressBar);
+        console.log(widthOfProgressBar)
+        audioOfSong.currentTime = (click.clientX - leftOfProgressBar) / widthOfProgressBar * audioOfSong.duration
+    })
+}
+

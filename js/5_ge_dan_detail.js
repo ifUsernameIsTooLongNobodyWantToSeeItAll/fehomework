@@ -79,6 +79,7 @@ let albumNameInList = document.getElementsByClassName("album_name_6")
 let songTotalTimeInList = document.getElementsByClassName("time_6")
 let songTitleInList = document.getElementsByClassName("title_7")
 let singerInList = document.getElementsByClassName("singer_7")
+let everySongId
 //main
 main()
 
@@ -110,6 +111,7 @@ function fetches() {
 function decode() {
     let playList = decodeURI(document.URL)
     playList = playList.slice(playList.indexOf('=') + 1)
+    console.log(`playlist: ${playList}`)
     return Number(playList)
 }
 
@@ -199,3 +201,4 @@ function directToSongs() {
         }
     }
 }
+

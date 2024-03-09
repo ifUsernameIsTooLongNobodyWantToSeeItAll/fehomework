@@ -9,7 +9,7 @@ const placePutLyrics = document.getElementById("lyrics_5")
 const everyLyrics = document.querySelector("#lyrics_5 ul")
 const albumPictureInPlayPage = document.getElementById("album_picture_in_7_4")
 const goToLastPage = document.getElementById("go_to_last_page_3")
-// const allBackground = document.getElementById("all_1")
+const allBackground = document.getElementById("all_1")
 const albumNameIn7 = document.getElementById("al_content_6")
 const singerNameIn7 = document.getElementById("singer_content_6")
 const songNameIn7 = document.getElementById("first_5")
@@ -37,7 +37,7 @@ main()
 
 // function
 function main() {
-    songId = decode()
+    songId = 1969538016// decode()
     playAll(songId)
     console.log(songOtherInformation)
 
@@ -87,9 +87,9 @@ function makeLyricsMove() {
     document.getElementById("music_to_play_4").addEventListener("timeupdate", function () {
         let index = getNowLyrics()
         let offset = liHeight * index + liHeight / 2 - 210
-        if (offset < 0) {
+        /*if (offset < 0) {
             offset = 0
-        } else if (offset > maxOffset) {
+        } else */if (offset > maxOffset) {
             offset = maxOffset
         }
         everyLyrics.style.transform = `translateY(-${offset}px)`
@@ -318,3 +318,4 @@ function setClick() {
 //     }
 //     allBackground.style.background = `linear-gradient(rgba(${numbers[0]}, ${numbers[1]}, ${numbers[2]}, ${numbers[3]}), rgba(${Math.floor(numbers[0] * 0.4)}, ${Math.floor(numbers[1] * 0.4)}, ${Math.floor(numbers[2] * 0.4)}, ${numbers[3]}))`
 // }
+
